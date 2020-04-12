@@ -1,51 +1,10 @@
 # Javascript
 
 <!-- prettier-ignore-start -->
-!!!include(docs/blog/javascript/querySelectorAll与getElementsBy区别.md)!!!
-
-!!!include(docs/blog/javascript/NodeList和HTMLCollection之间的关系.md)!!!
-
-!!!include(docs/blog/javascript/map(parseInt)坑.md)!!!
-
-!!!include(docs/blog/javascript/默认参数引发的bug.md)!!!
 
 !!!include(docs/blog/javascript/多余逗号引发的错误.md)!!!
 
-!!!include(docs/blog/javascript/js中的逗号.md)!!!
-
-!!!include(docs/blog/javascript/document.documentElement与document.body.md)!!!
-
-!!!include(docs/blog/javascript/sort.md)!!!
-
-!!!include(docs/blog/javascript/codePointAt和charCodeAt.md)!!!
-
-!!!include(docs/blog/javascript/switch.md)!!!
-
-!!!include(docs/blog/javascript/div-keydown.md)!!!
-
-!!!include(docs/blog/javascript/console的坑.md)!!!
-
-!!!include(docs/blog/javascript/finally坑.md)!!!
-
-!!!include(docs/blog/javascript/atob解码中文字符.md)!!!
-
-!!!include(docs/blog/javascript/Safari下Date的坑.md)!!!
-
-!!!include(docs/blog/javascript/e.target与e.currentTarget的区别.md)!!!
-
-!!!include(docs/blog/javascript/函数变量必填校验.md)!!!
-
 !!!include(docs/blog/javascript/错误处理.md)!!!
-
-!!!include(docs/blog/javascript/insertBefore坑.md)!!!
-
-!!!include(docs/blog/javascript/为什么前端监控要用GIF打点.md)!!!
-
-!!!include(docs/blog/javascript/Object.create.md)!!!
-
-!!!include(docs/blog/javascript/promise-in-forEach.md)!!!
-
-!!!include(docs/blog/javascript/函数参数传递.md)!!!
 
 
 <!-- prettier-ignore-end -->

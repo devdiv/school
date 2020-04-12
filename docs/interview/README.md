@@ -1,3 +1,6 @@
+---
+sidebar: auto
+---
 # 面试
 
 ::: tip

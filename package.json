@@ -1,9 +1,9 @@
 {
-  "name": "notes",
+  "name": "Notes",
   "version": "1.0.0",
-  "description": "notes",
+  "description": "Knowledge Management",
   "main": "index.js",
-  "author": "devdiv",
+  "author": "DevDiv",
   "license": "MIT",
   "scripts": {
     "dev": "vuepress dev docs",

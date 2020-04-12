@@ -33,7 +33,7 @@ module.exports = {
       },
       {
         text: '阅读',
-        link: '/diary/read'
+        link: '/reading/'
       },
       {
         text: '文章',

@@ -4,5 +4,5 @@ heroImage: /home.jpg
 actionText: 开始了解 →
 actionLink: /blog/
 
-footer: MIT Licensed | Copyright © 2020-devdiv
+footer: MIT Licensed | Copyright © 2020-DevDiv
 ---
