@@ -1,7 +1,7 @@
 const utils = require('./utils')
 
 module.exports = {
-  title: "School",
+  title: 'School',
   description: '测试开发技术栈',
   base: '/school/',
   head: [
@@ -20,34 +20,33 @@ module.exports = {
         link: '/'
       },
       {
-        text: '测试',
-        link: '/testing/'
-      },
-      {
-        text: '开发',
-        link: '/develop/'
-      },
-      {
         text: '网站',
         link: '/website/'
-      },
-      {
-        text: '读书',
-        link: '/reading/'
       },
       {
         text: '文章',
         link: '/article/'
       },
       {
+        text: '开发',
+        link: '/develop/'
+      },
+      {
+        text: '测试',
+        link: '/testing/'
+      },
+      {
         text: '博客',
         link: '/blog/'
+      },
+      {
+        text: '读书',
+        link: '/reading/'
       },
       {
         text: '面试',
         link: '/interview/'
       }
-  
     ],
     sidebar: utils.inferSiderbars(),
     lastUpdated: '上次更新',
