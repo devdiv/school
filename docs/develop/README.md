@@ -2,9 +2,7 @@
 sidebar: auto
 ---
 
-# 测试
 
-**测试常用知识整理**
 
 ## 前端常用
 
@@ -111,13 +109,6 @@ sidebar: auto
 - [**buefy**](https://github.com/buefy/buefy) 适配移动端的 vue 组件库 看着还挺舒服的
 - [**vxe-table**](https://github.com/xuliangzhan/vxe-table)vue 表格解决方案，还没具体用过看着的确解决了其它 table 组件的一些问题
 
-## 实践库
-
-- [**Jasonette**](https://github.com/Jasonette/JASONETTE-iOS) 一个用 json 来构建 hybrid App 的框架
-- [**crate**](https://github.com/atulmy/crate) 一个 react 全栈练习(pc,mobile,rn,api) demo，适合入门拿来练手
-- [**react-in-patterns**](https://github.com/krasimir/react-in-patterns) 一本开源教你如何写 react 的书
-- [**hocs**](https://github.com/deepsweet/hocs) react 相关 hoc 收集库
-
 ## 文档
 
 - [**vuepress**](https://github.com/vuejs/vuepress) vue 官方出品的文档工具
@@ -217,13 +208,6 @@ sidebar: auto
 - [**node-in-debugging**](https://github.com/nswbmw/node-in-debugging) node.js 调试指南
 - [**node-best-practices**](https://github.com/i0natan/nodebestpractices) node 最佳实践
 - [**Node.js 最佳实践**](https://github.com/i0natan/nodebestpractices/blob/master/README.chinese.md)
-
-## GraphQL
-
-- [**prisma**](https://www.prisma.io/docs/) 让前端也能快速的写出
-- [**Apollo GraphQL**](https://www.apollographql.com/) 是基于 GraphQL 的全栈解决方案集合。从后端到前端提供了对应的 lib 使得开发使用 GraphQL 更加的方便
-- [**dataloader**](https://github.com/facebook/dataloader) 解决 Graphql 中的 N+1 查询问题
-
 ## 工具
 
 - [**high-speed-downloader**](https://github.com/high-speed-downloader/high-speed-downloader) 百度网盘不限速下载 支持 Windows 和 Mac
@@ -297,23 +281,6 @@ sidebar: auto
 - [**cssnano**](https://github.com/cssnano/cssnano) CSS 压缩
 - [**bundle-buddy**](https://github.com/samccone/bundle-buddy) webpack bundle 依赖分析
 
-## 移动端
-
-- [**fastclick**](https://github.com/ftlabs/fastclick) 解决移动端一些点击问题
-
-## 性能优化
-
-- [**workbox**](https://github.com/googlechrome/workbox) PWA 方案，Google 出品
-
-## 请求处理
-
-- [**axios**](https://github.com/axios/axios) 目前最常见的请求库
-- [**got**](https://github.com/sindresorhus/got) http 请求库 如果你觉得 request 太多的话 这是一个不错的选择
-- [**request**](https://github.com/request/request) 老牌请求库 -[\*whatwg-fetch\*\*](https://github.com/github/fetch) fetch 请求库
-- [**grpc-web**](https://github.com/grpc/grpc-web) 前端直连 gRPC 服务
-- [**node-fetch**](https://github.com/bitinn/node-fetch) node 环境下轻量级 fetch 请求库
-- [**reqwest**](https://github.com/ded/reqwest)
-
 ## 工程
 
 - [**lerna**](https://github.com/lerna/lerna) monorepo 管理
@@ -361,33 +328,6 @@ sidebar: auto
 - [**Image2Icon**](http://www.img2icnsapp.com/)
 - [**hidden**](https://github.com/dwarvesf/hidden) 是用来帮助你隐藏 macOS 菜单栏上那些不常用的应用图标
 
-## 录制
-
-- [**licecap**](https://www.cockos.com/licecap/) gif 录制，简洁好用，之前都用这个录制
-- [**kap**](https://getkap.co/) 现在都用这个录制 gif，还支持导出 mp4，录制的 fps 很高
-- [**KeyCastr**](https://github.com/keycastr/keycastr) 按键显示，录制的时候显示你的按键
-
-## Chrome 拓展
-
-- [**Tampermonkey**](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) 油猴 神器
-- [**扩展管理器**](https://chrome.google.com/webstore/detail/extension-manager/gjldcdngmdknpinoemndlidpcabkggco/related?utm_source=chrome-ntp-icon) 轻松管理扩展，就不用担心安装太多扩展了
-- [**visbug**](https://github.com/GoogleChromeLabs/ProjectVisBug) 它可以帮助你改变 css，移动元素等等一系类强大的功能,页面调试神器。当然有些时候还是 DevTools 更好用
-- [**refined-github**](https://github.com/sindresorhus/refined-github) 优化 github 默认功能和样式的 chrome 插件
-- [**ADB**](https://chrome.google.com/webstore/detail/adb/dpngiggdglpdnjdoaefidgiigpemgage) chrome 真机调试安卓神器
-- [**Adblock Plus**](https://chrome.google.com/webstore/detail/adblock-plus-free-ad-bloc/cfhdojbkjhnklbpkdaibdccddilifddb)
-  免费广告拦截程序 这个应该不用说了，装机必备
-- [**Axure RP Extension**](https://chrome.google.com/webstore/detail/axure-rp-extension-for-ch/dogkpdfcklifaemcdfbildhcofnopogp) 看原型必备
-- [**JSON Formatter**](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa) JSON 格式化 程序员必备
-- [**Lighthouse**](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk) 谷歌出品，检查网页综合性能评分，分析不足
-- [**二维码(QR 码)生成器**](https://chrome.google.com/webstore/detail/%E4%BA%8C%E7%BB%B4%E7%A0%81qr%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8qr-code-generato/pflgjjogbmmcmfhfcnlohagkablhbpmg) 手机扫码神器
-- [**Octotree**](https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc) github 上看代码必备神器
-- [**OctoLinker**](https://chrome.google.com/webstore/detail/octolinker/jlmafbaeoofdegohdhinkhilhclaklkp) 能在 github 上看代码的时候 快速链接跳转到依赖的库
-- [**The Great Suspender**](https://chrome.google.com/webstore/detail/the-great-suspender/klbibkeccnjlkjkiokjodocebajanakg) chrome 太吃内存了，当页面开的很多时候会很卡，它就完美的解决了这个问题。它将几分钟没浏览过的页面都挂载了，当你想看是再重新加载
-- [**WEB 前端助手**](https://chrome.google.com/webstore/detail/web%E5%89%8D%E7%AB%AF%E5%8A%A9%E6%89%8Bfehelper/pkgccpejnmalmdinmhkkfafefagiiiad) 支持 JSON 格式化、二维码生成与解码、代码压缩、Markdown 与 HTML 互转、网页滚动截屏、正则表达式、时间转换工具、JSON 比对工具等
-- [**掘金**](https://chrome.google.com/webstore/detail/%E6%8E%98%E9%87%91/lecdifefmmfjnjjinhaennhdlmcaeeeb) 目前我默认新开 tab 的默认页，可以刷刷新的文章或者项目，还不错。
-- [**沙拉查词**](https://chrome.google.com/webstore/detail/%E6%B2%99%E6%8B%89%E6%9F%A5%E8%AF%8D-%E8%81%9A%E5%90%88%E8%AF%8D%E5%85%B8%E5%88%92%E8%AF%8D%E7%BF%BB%E8%AF%91/cdonnmffkdaoajfknoeeecmchibpmkmg) 划词翻译插件
-- [**npmhub**](https://github.com/npmhub/npmhub)在 README 下方显示 npm 依赖信息
-
 ## VS Code
 
 - [**Import Cost**](https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost) 查看你引入的依赖模块大小
@@ -401,7 +341,6 @@ sidebar: auto
 ### 主题
 
 [**官方主题页**](https://marketplace.visualstudio.com/search?target=VSCode&category=Themes&sortBy=Installs) 可以选择自己喜欢的主题
-[**one-monokai**](https://marketplace.visualstudio.com/items?itemName=azemoh.one-monokai) 我用的是这个主题，很多年了
 
 ### 字体
 
@@ -414,7 +353,7 @@ sidebar: auto
 - [**Go2shell**](https://zipzapmac.com/Go2Shell) 在当前文件夹打开 shell
 - Terminal 用 [**iTerm2**](https://www.iterm2.com/) + [**zsh**](https://en.wikipedia.org/wiki/Z_shell) + [**oh-my-zsh**](https://github.com/robbyrussell/oh-my-zsh) 的组合，主题是 [robbyrussell](https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/robbyrussell.zsh-theme)
 
-### zsh 插件
+### 插件
 
 - [**Homebrew**](https://brew.sh/index_zh-cn) 必装
 - [**autojump**](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/autojump) 实现目录间快速跳转，想去哪个目录直接 j + 目录名，不用在频繁的 cd 了
@@ -433,17 +372,3 @@ sidebar: auto
 - [**postman**](https://www.getpostman.com/) api 调试工具
 - [**Sequel Pro**](https://www.sequelpro.com/) MySQL 界面管理工具
 - [**KeepingYouAwake**](https://github.com/newmarcel/KeepingYouAwake) 可保证系统不自动休眠，挂机跑脚本很有用
-
-## 有趣
-
-- [**the-bread-code**](https://github.com/hendricius/the-bread-code) 使用程序员的思维制作面包 ，比如制作中使用 A/B test,
-  来比较那种做法更好。
-- [**build-your-own-x**](https://github.com/danistefanovic/build-your-own-x) 教你用各种语言实现 Bot Database Neural Network
-- [**javascript-algorithms **](https://github.com/trekhleb/javascript-algorithms) 教你用前端知识认识各种算法
-- [**not-paid**](https://github.com/kleampa/not-paid) 如果你给人做网站，交过去以后对方没有付款，那么这个 JS 会把网站的透明度一天调低一点，直到看不见
-- [**nsfwjs**](https://github.com/infinitered/nsfwjs) 前端图片鉴黄，基于 Tensorflow
-- [**elevator.js**](https://github.com/tholman/elevator.js) 我很喜欢的一个库，让一个 back-to-top 的效果有了一种坐复古电梯的感觉
-- [**app-ideas**](https://github.com/florinpop17/app-ideas) 很多年轻人苦于缺少练手的项目，这个项目收集了不少点子，每个点子都有明确的目标和复杂资源。
-- [**WebGL-Fluid-Simulation**](https://github.com/PavelDoGreat/WebGL-Fluid-Simulation) 很酷的 WebGL 交互
-- [**react-kawaii**](https://github.com/miukimiu/react-kawaii) 一个非常可爱的 React 卡通人脸库，很有意思
-- [**chart-race-react**](https://github.com/Mckinsey666/chart-race-react) 图表竞赛 长条图赛跑动画 在微博或者 b 站这种类型视频很火

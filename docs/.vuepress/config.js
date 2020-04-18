@@ -1,9 +1,9 @@
 const utils = require('./utils')
 
 module.exports = {
-  title: 'notes',
-  description: '个人收藏夹',
-  base: '/notes/',
+  title: "School",
+  description: '测试开发技术栈',
+  base: '/school/',
   head: [
     [
       'link',
@@ -21,18 +21,18 @@ module.exports = {
       },
       {
         text: '测试',
-        link: '/test/'
+        link: '/testing/'
       },
       {
         text: '开发',
-        link: '/dev/'
+        link: '/develop/'
       },
       {
         text: '网站',
         link: '/website/'
       },
       {
-        text: '阅读',
+        text: '读书',
         link: '/reading/'
       },
       {
@@ -51,7 +51,7 @@ module.exports = {
     ],
     sidebar: utils.inferSiderbars(),
     lastUpdated: '上次更新',
-    repo: 'devdiv/notes',
+    repo: 'devdiv/school',
     editLinks: true,
     docsDir: 'docs',
     editLinkText: '在 GitHub 上编辑此页',
