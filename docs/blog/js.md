@@ -2,10 +2,6 @@
 
 <!-- prettier-ignore-start -->
 
-!!!include(docs/blog/javascript/多余逗号引发的错误.md)!!!
-
-!!!include(docs/blog/javascript/错误处理.md)!!!
-
 
 <!-- prettier-ignore-end -->
 
