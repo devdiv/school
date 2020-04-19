@@ -20,7 +20,7 @@ module.exports = {
         link: '/'
       },
       {
-        text: '网站',
+        text: '收藏',
         link: '/website/'
       },
       {
