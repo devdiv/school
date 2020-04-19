@@ -10,7 +10,7 @@ GitEE 访问地址：http://devdiv.gitee.io/school/)
 **本项目为互联网开发、测试等技术学习总结与收藏库**
 
 - [文章](#%E6%96%87%E7%AB%A0)
-- [开发](#%E5%BC%80%E5%8F%91)
+- [网站](#%E7%BD%91%E7%AB%99)
   - [前端常用](#%E5%89%8D%E7%AB%AF%E5%B8%B8%E7%94%A8)
   - [Css && 动画](#css--%E5%8A%A8%E7%94%BB)
   - [Vue](#vue)
@@ -35,7 +35,7 @@ GitEE 访问地址：http://devdiv.gitee.io/school/)
 
 # 文章
 
-# 开发
+# 网站
 
 ## 前端常用
 

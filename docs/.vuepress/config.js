@@ -2,7 +2,7 @@ const utils = require('./utils')
 
 module.exports = {
   title: 'School',
-  description: '测试开发技术栈',
+  description: '测试、开发、读书、分享',
   base: '/school/',
   head: [
     [
