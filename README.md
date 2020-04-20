@@ -1,16 +1,17 @@
 <p align="center">
-  <img width="320" src="/docs/.vuepress/public/home.png">
+  <img width="320" src="/docs/.vuepress/public/home.svg">
 </p>
 
-GitHub 访问地址：https://devdiv.github.io/school
-GitEE 访问地址：http://devdiv.gitee.io/school/)
+##### GitHub 访问地址：https://devdiv.github.io/school
+
+##### GitEE 访问地址：http://devdiv.gitee.io/school/)
 
 <!-- 个人 Blog 文章地址：https://devdiv.github.io/school/blog/js.html -->
 
 **本项目为互联网开发、测试等技术学习总结与收藏库**
 
-- [文章](#%E6%96%87%E7%AB%A0)
-- [网站](#%E7%BD%91%E7%AB%99)
+- [工具](#%E5%B7%A5%E5%85%B7)
+- [收藏](#%E6%94%B6%E8%97%8F)
   - [前端常用](#%E5%89%8D%E7%AB%AF%E5%B8%B8%E7%94%A8)
   - [Css && 动画](#css--%E5%8A%A8%E7%94%BB)
   - [Vue](#vue)
@@ -21,7 +22,7 @@ GitEE 访问地址：http://devdiv.gitee.io/school/)
     - [命令行](#%E5%91%BD%E4%BB%A4%E8%A1%8C)
     - [文件处理](#%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86)
     - [调试](#%E8%B0%83%E8%AF%95)
-  - [工具](#%E5%B7%A5%E5%85%B7)
+  - [工具](#%E5%B7%A5%E5%85%B7-1)
   - [Webpack](#webpack)
   - [工程](#%E5%B7%A5%E7%A8%8B)
   - [Mac](#mac)
@@ -33,9 +34,9 @@ GitEE 访问地址：http://devdiv.gitee.io/school/)
   - [开发常用软件](#%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6)
 - [测试](#%E6%B5%8B%E8%AF%95)
 
-# 文章
+# 工具
 
-# 网站
+# 收藏
 
 ## 前端常用
 

@@ -24,16 +24,20 @@ module.exports = {
         link: '/website/'
       },
       {
+        text: '工具',
+        link: '/tools/'
+      },
+      {
         text: '文章',
         link: '/article/'
       },
       {
-        text: '开发',
-        link: '/develop/'
-      },
-      {
         text: '测试',
         link: '/testing/'
+      },
+      {
+        text: '开发',
+        link: '/develop/'
       },
       {
         text: '博客',
@@ -42,10 +46,6 @@ module.exports = {
       {
         text: '读书',
         link: '/reading/'
-      },
-      {
-        text: '面试',
-        link: '/interview/'
       }
     ],
     sidebar: utils.inferSiderbars(),
