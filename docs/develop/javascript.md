@@ -26,7 +26,7 @@
 - 变量提升
 - 严格模式 use strict
 
-```py
+```js
 1、"use strict"的目的是消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为
 2、"use strict" 指令在 JavaScript 1.8.5 (ECMAScript5) 中新增
 3、"use strict" 指令只允许出现在脚本或函数的开头
