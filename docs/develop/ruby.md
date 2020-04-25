@@ -1,8 +1,5 @@
 # Ruby
 
-::: warning
-_here be dragons_
-:::
 Ruby 是一种纯粹的面向对象编程语言。它由日本的松本行弘创建于 1993 年。
 
 > Ruby 中文官网：[http://www.ruby-lang.org/zh_cn/](http://www.ruby-lang.org/zh_cn/)
