@@ -1,5 +1,9 @@
 # Ruby
 
+Ruby 是一种纯粹的面向对象编程语言。它由日本的松本行弘创建于 1993 年。
+
+> Ruby 中文官网：[http://www.ruby-lang.org/zh_cn/](http://www.ruby-lang.org/zh_cn/)
+
 <!-- prettier-ignore-start -->
 !!!include(docs/develop/ruby/基础.md)!!!
 !!!include(docs/develop/ruby/环境变量.md)!!!
@@ -12,7 +16,3 @@
 !!!include(docs/develop/ruby/方法.md)!!!
 !!!include(docs/develop/ruby/模块.md)!!!
 <!-- prettier-ignore-end -->
-
-Ruby 是一种纯粹的面向对象编程语言。它由日本的松本行弘创建于 1993 年。
-
-> Ruby 中文官网：[http://www.ruby-lang.org/zh_cn/](http://www.ruby-lang.org/zh_cn/)
