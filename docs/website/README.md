@@ -4,6 +4,10 @@ sidebar: auto
 
 # 收藏
 
+## Ruby
+
+- [**笨方法学编程（英文网站）**](https://learncodethehardway.org/)一系列非常好的练习，附带讲解，包含 Python、Ruby、C、SQL、JavaScript、Unix、Regex、Design 等学习资料，可以指导你从基本的 知识一路进阶到中高级开发。
+
 ## 前端常用
 
 - [**sweetalert2**](https://github.com/sweetalert2/sweetalert2) 一个自适应，且自定义性强的弹出框（零依赖）

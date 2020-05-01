@@ -11,6 +11,7 @@
 **本项目为互联网开发、测试等技术学习总结与收藏库**
 
 - [收藏](#%E6%94%B6%E8%97%8F)
+  - [Ruby](#ruby)
   - [前端常用](#%E5%89%8D%E7%AB%AF%E5%B8%B8%E7%94%A8)
   - [Css && 动画](#css--%E5%8A%A8%E7%94%BB)
   - [Vue](#vue)
@@ -43,6 +44,10 @@
     - [自动化测试执行](#%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%89%A7%E8%A1%8C)
 
 # 收藏
+
+## Ruby
+
+- [**笨方法学编程（英文网站）**](https://learncodethehardway.org/)一系列非常好的练习，附带讲解，包含 Python、Ruby、C、SQL、JavaScript、Unix、Regex、Design 等学习资料，可以指导你从基本的 知识一路进阶到中高级开发。
 
 ## 前端常用
 
