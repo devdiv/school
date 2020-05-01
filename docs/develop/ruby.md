@@ -42,4 +42,6 @@ Ruby 是一种纯粹的面向对象编程语言。它由日本的松本行弘创
 !!!include(docs/develop/ruby/Dir类和方法.md)!!!
 !!!include(docs/develop/ruby/异常.md)!!!
 !!!include(docs/develop/ruby/正则表达式.md)!!!
+
+!!!include(docs/develop/ruby/CGI编程.md)!!!
 <!-- prettier-ignore-end -->

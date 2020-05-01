@@ -1,1 +1,1 @@
-# Django 框架
+# Django
