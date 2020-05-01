@@ -19,10 +19,10 @@ JavaScript 由 Brendan Eich 发明。它于 1995 年出现在 Netscape 中（该
 !!!include(docs/develop/javascript/函数.md)!!!
 !!!include(docs/develop/javascript/事件.md)!!!
 !!!include(docs/develop/javascript/表单.md)!!!
-!!!include(docs/develop/javascript/文件.md)!!!
 !!!include(docs/develop/javascript/异常.md)!!!
 !!!include(docs/develop/javascript/调试.md)!!!
 !!!include(docs/develop/javascript/正则表达式.md)!!!
+!!!include(docs/develop/javascript/JSON.md)!!!
 !!!include(docs/develop/javascript/browserBom.md)!!!
 !!!include(docs/develop/javascript/htmlDom.md)!!!
 !!!include(docs/develop/javascript/代码规范.md)!!!
