@@ -1,4 +1,4 @@
-## 浏览器 BOM
+## JS 浏览器 BOM
 
 - Windows
 

@@ -1,4 +1,4 @@
-## CGI 编程
+## Ruby CGI 编程
 
 - CGI 方法
 

@@ -1,4 +1,4 @@
-## HTML DOM
+## JS HTML DOM
 
 - DOM HTML
 
