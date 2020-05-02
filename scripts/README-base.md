@@ -4,8 +4,8 @@
 
 ##### GitHub 访问地址：https://devdiv.github.io/school
 
-##### GitEE 访问地址：http://devdiv.gitee.io/school/)
+##### GitEE 访问地址：http://devdiv.gitee.io/school/
 
-<!-- 个人 Blog 文章地址：https://devdiv.github.io/school/blog/js.html -->
+**本项目为互联网测试开发、开发、工具、框架、读书学习总结与收藏集**
 
-**本项目为互联网开发、测试等技术学习总结与收藏库**
+**如果你有好的推荐或愿意加入到这一学习、分享的过程中来，请直接邮件联系作者**

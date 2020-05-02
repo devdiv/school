@@ -11,17 +11,17 @@ Linux 能运行主要的 UNIX 工具软件、应用程序和网络协议。它�
 - [**菜鸟教程-Linux 教程**](https://www.runoob.com/linux/linux-intro.html)包含比较详细的安装、启动、云服务器、文件目录、磁盘管理等教程。
 
 <!-- prettier-ignore-start -->
-- !!!include(docs/develop/linux/yum.md)!!!
-- !!!include(docs/develop/linux/命令大全.md)!!!
+- !!!include(docs/article/linux/yum.md)!!!
+- !!!include(docs/article/linux/命令大全.md)!!!
 <!-- prettier-ignore-end -->
 
 **Linux Shell 教程**
 
 <!-- prettier-ignore-start -->
-- !!!include(docs/develop/shell/开始.md)!!!
-- !!!include(docs/develop/shell/变量.md)!!!
-- !!!include(docs/develop/shell/字符串.md)!!!
-- !!!include(docs/develop/shell/数组.md)!!!
-- !!!include(docs/develop/shell/参数传递.md)!!!
+- !!!include(docs/article/linux/shell/开始.md)!!!
+- !!!include(docs/article/linux/shell/变量.md)!!!
+- !!!include(docs/article/linux/shell/字符串.md)!!!
+- !!!include(docs/article/linux/shell/数组.md)!!!
+- !!!include(docs/article/linux/shell/参数传递.md)!!!
   
 <!-- prettier-ignore-end -->

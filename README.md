@@ -4,11 +4,11 @@
 
 ##### GitHub 访问地址：https://devdiv.github.io/school
 
-##### GitEE 访问地址：http://devdiv.gitee.io/school/)
+##### GitEE 访问地址：http://devdiv.gitee.io/school/
 
-<!-- 个人 Blog 文章地址：https://devdiv.github.io/school/blog/js.html -->
+**本项目为互联网测试开发、开发、工具、框架、读书学习总结与收藏集**
 
-**本项目为互联网开发、测试等技术学习总结与收藏库**
+**如果你有好的推荐或愿意加入到这一学习、分享的过程中来，请直接邮件联系作者**
 
 - [收藏](#%E6%94%B6%E8%97%8F)
   - [Markdown](#markdown)
@@ -34,15 +34,6 @@
     - [插件](#%E6%8F%92%E4%BB%B6)
   - [开发常用软件](#%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6)
 - [测试](#%E6%B5%8B%E8%AF%95)
-- [工具](#%E5%B7%A5%E5%85%B7-1)
-  - [Python 自动化测试](#python-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95)
-    - [单元测试](#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95)
-    - [Mock 测试](#mock-%E6%B5%8B%E8%AF%95)
-    - [Web 测试](#web-%E6%B5%8B%E8%AF%95)
-    - [GUI 测试](#gui-%E6%B5%8B%E8%AF%95)
-    - [代码静态检查](#%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E6%A3%80%E6%9F%A5)
-    - [代码覆盖统计](#%E4%BB%A3%E7%A0%81%E8%A6%86%E7%9B%96%E7%BB%9F%E8%AE%A1)
-    - [自动化测试执行](#%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%89%A7%E8%A1%8C)
 
 # 收藏
 
@@ -425,23 +416,3 @@
 - [**KeepingYouAwake**](https://github.com/newmarcel/KeepingYouAwake) 可保证系统不自动休眠，挂机跑脚本很有用
 
 # 测试
-
-# 工具
-
-## Python 自动化测试
-
-> 详细参考：https://wiki.python.org/moin/PythonTestingToolsTaxonomy
-
-### 单元测试
-
-### Mock 测试
-
-### Web 测试
-
-### GUI 测试
-
-### 代码静态检查
-
-### 代码覆盖统计
-
-### 自动化测试执行
