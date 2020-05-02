@@ -1,4 +1,4 @@
-## Linux Yum
+## Yum
 
 `yum`（ Yellow dog Updater, Modified）是一个在`Fedora`和`RedHat`以及`SUSE`中的`Shell`前端软件包管理器。
 
@@ -13,7 +13,7 @@ yum [options] [command] [package ...]
 # package操作的对象。
 ```
 
-- yml 常用命令
+1、 yml 常用命令
 
 | 命令                                                                  | 功能                                 |
 | --------------------------------------------------------------------- | ------------------------------------ |
@@ -29,7 +29,7 @@ yum [options] [command] [package ...]
 | yum clean oldheaders                                                  | 清除缓存目录下旧的 headers           |
 | yum clean, yum clean all (= yum clean packages; yum clean oldheaders) | 清除缓存目录下的软件包及旧的 headers |
 
-- yum 源
+2、 yum 源
 
 | yum 源      | 安装说明                                  |
 | ----------- | ----------------------------------------- |
