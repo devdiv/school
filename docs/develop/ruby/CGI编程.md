@@ -1,9 +1,9 @@
 ## Ruby CGI 编程
 
-- CGI 方法
+1、CGI 方法
 
-- CGI Cookie
+2、CGI Cookie
 
-- CGI Session
+3、CGI Session
 
-- CGI 实例
+4、CGI 实例
