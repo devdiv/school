@@ -1,7 +1,7 @@
 {
-  "name": "School",
+  "name": "tschool",
   "version": "1.0.0",
-  "description": "The school for programming,testing,reading and sharing  experience!",
+  "description": "测试开发学习总结与收藏集",
   "main": "index.js",
   "author": "DevDiv",
   "license": "MIT",

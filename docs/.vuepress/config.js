@@ -1,9 +1,9 @@
 const utils = require('./utils')
 
 module.exports = {
-  title: 'School',
-  description: '测试、开发、读书、分享',
-  base: '/school/',
+  title: 'tschool',
+  description: '测试知识共享平台',
+  base: '/tschool/',
   head: [
     [
       'link',
@@ -24,33 +24,25 @@ module.exports = {
         link: '/website/'
       },
       {
-        text: '工具',
-        link: '/tools/'
+        text: '基础',
+        link: '/base/'
       },
       {
-        text: '文章',
-        link: '/article/'
+        text: '工具',
+        link: '/tool/'
       },
       {
         text: '测试',
-        link: '/testing/'
+        link: '/test/'
       },
       {
         text: '开发',
-        link: '/develop/'
-      },
-      {
-        text: '博客',
-        link: '/blog/'
-      },
-      {
-        text: '读书',
-        link: '/reading/'
+        link: '/dev/'
       }
     ],
     sidebar: utils.inferSiderbars(),
     lastUpdated: '上次更新',
-    repo: 'devdiv/school',
+    repo: 'devdiv/tschool',
     editLinks: true,
     docsDir: 'docs',
     editLinkText: '在 GitHub 上编辑此页',

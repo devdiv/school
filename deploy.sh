@@ -4,7 +4,7 @@
 set -e
 
 # 安装依赖包
-npm install
+# npm install
 
 # 生成静态文件
 npm run build
@@ -19,6 +19,6 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f "https://${access_token}@github.com/devdiv/school.git" master:gh-pages
+git push -f "https://${access_token}@github.com/devdiv/tschool.git" master:gh-pages
 
 cd -
