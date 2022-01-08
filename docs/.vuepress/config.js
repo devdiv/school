@@ -6,7 +6,6 @@ const sidebarConf = require('./config/sidebarConf.js');
 const headConf = require('./config/headConf.js');
 
 module.exports = {
-  theme: path.resolve(__dirname, './theme'),
   bundler: '@vuepress/vite',
   bundlerConfig: {
     vuePluginOptions: {
@@ -42,7 +41,7 @@ module.exports = {
       lineNumbers: false
     }
   },
-  extendsMarkdown(md) {
-    md.use(katex)
-  }
+  // extendsMarkdown(md) {
+  //   md.use(katex)
+  // }
 }

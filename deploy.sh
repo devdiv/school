@@ -3,11 +3,8 @@
 # 确保脚本抛出遇到的错误
 set -e
 
-# 安装依赖包
-npm install
-
 # 生成静态文件
-npm run build
+yarn run build
 
 # 进入生成的文件夹
 cd docs/.vuepress/dist

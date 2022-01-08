@@ -1,0 +1,42 @@
+name: Deploy Vuepress
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Install and Build 🔧
+        env:
+          TZ: Asia/Shanghai
+        run: |
+          export GOOGLE_GA=${{ secrets.GOOGLE_GA }} GOOGLE_SEARCH_CONSOLE=${{ secrets.GOOGLE_SEARCH_CONSOLE }}
+          git --no-pager log --oneline -n 20
+          yarn
+          yarn docs:build
+
+      - name: Deploy Github 🚀
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.PAGES_TOKEN }}
+          publish_dir: docs/.vuepress/dist
+          cname: docs.shanyuhai.top
+          commit_message: ${{ github.event.head_commit.message }}
+
+      - name: Deploy Server 🚀
+        uses: burnett01/rsync-deployments@4.1
+        with:
+          switches: -avzr --delete
+          path: docs/.vuepress/dist/
+          remote_path: ${{ secrets.SERVER_TARGET }}
+          remote_host: ${{ secrets.SERVER_IP }}
+          remote_port: ${{ secrets.SERVER_PORT }}
+          remote_user: ${{ secrets.SSH_USERNAME }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}

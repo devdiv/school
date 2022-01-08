@@ -1,13 +1,12 @@
 module.exports = [
   { text: '首页', link: '/' },
-
   { text: '基础', children: [
-    { text: '系统', children: [
-      { text: 'Linux', link: '/base/os/linux/' },
-    ]},
     { text: '网络', children: [
       { text: 'TCP/IP', link: '/base/net/tcpip/' },
     ]},
+    { text: '系统', children: [
+      { text: 'Linux', link: '/base/os/linux/' },
+    ]},  
     { text: '数据库', children: [
       { text: 'MySQL', link: '/base/db/mysql/' },
       { text: 'MongoDB', link: '/base/db/mongodb/' },
