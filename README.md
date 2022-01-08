@@ -1,4 +1,4 @@
-# 软件测试知识学习笔记🎉
+# 软件测试学习笔记🎉
 
 GitHub 访问地址：<https://devdiv.github.io/tschool>
 
