@@ -1,5 +1,5 @@
 .temp
 .cache
-dict
+dist
 node_modules
 yarn.lock
