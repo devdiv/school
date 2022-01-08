@@ -1,5 +1,4 @@
 const path = require('path');
-const katex = require('markdown-it-katex')
 const pluginConf = require('./config/pluginConf.js');
 const navConf = require('./config/navConf.js');
 const sidebarConf = require('./config/sidebarConf.js');
@@ -41,7 +40,4 @@ module.exports = {
       lineNumbers: false
     }
   },
-  // extendsMarkdown(md) {
-  //   md.use(katex)
-  // }
 }

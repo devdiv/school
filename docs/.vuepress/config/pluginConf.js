@@ -21,9 +21,9 @@ module.exports = [
     title: {
       mode: "uppercase",
     },
-    git: {
-      trackStatus: 'add'
-    },
+    // git: {
+    //   trackStatus: 'add'
+    // },
   }],
   ['@vuepress/plugin-search', {
     locales: {
