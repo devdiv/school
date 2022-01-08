@@ -15,17 +15,17 @@ module.exports = {
       }
     }
   },
-  base:/tschool/,
   lang: 'zh-CN',
   title: '软件测试知识库',
   description: '软件测试知识学习笔记',
+  base: '/school/',
   head: headConf,
   plugins: pluginConf,
   themeConfig: {
     logo: '/hero.png',
     lastUpdatedText: '上次更新',
     contributorsText: '贡献者',
-    docsRepo: 'devdiv/tshcool',
+    docsRepo: 'devdiv/tschool',
     editLinks: true,
     editLinkText: '编辑文档！',
     docsDir: 'docs',
