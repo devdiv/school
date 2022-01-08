@@ -15,6 +15,7 @@ module.exports = {
       }
     }
   },
+  base:/tschool/,
   lang: 'zh-CN',
   title: '软件测试知识库',
   description: '软件测试知识学习笔记',
