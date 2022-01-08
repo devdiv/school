@@ -1,8 +1,13 @@
 ---
 home: true
-heroImage: /home.png
-actionText: 开始了解 →
-actionLink: /website/
-
+heroText: 软件测试知识库
+heroImage: /hero.png
+heroImageDark: /hero.png
+tagline: 软件测试知识学习笔记
+actions:
+  - text: 开始学习 →
+    link: /guide/
+    type: primary
 footer: MIT Licensed | Copyright © 2020-DevDiv
 ---
+

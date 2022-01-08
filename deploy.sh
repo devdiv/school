@@ -4,7 +4,7 @@
 set -e
 
 # 安装依赖包
-# npm install
+npm install
 
 # 生成静态文件
 npm run build

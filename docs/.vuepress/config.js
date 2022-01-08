@@ -1,65 +1,48 @@
-const utils = require('./utils')
+const path = require('path');
+const katex = require('markdown-it-katex')
+const pluginConf = require('./config/pluginConf.js');
+const navConf = require('./config/navConf.js');
+const sidebarConf = require('./config/sidebarConf.js');
+const headConf = require('./config/headConf.js');
 
 module.exports = {
-  title: 'tschool',
-  description: '测试知识共享平台',
-  base: '/tschool/',
-  head: [
-    [
-      'link',
-      {
-        rel: 'icon',
-        href: '/favicon.ico'
+  theme: path.resolve(__dirname, './theme'),
+  bundler: '@vuepress/vite',
+  bundlerConfig: {
+    vuePluginOptions: {
+      template: {
+        compilerOptions: {
+          isCustomElement: tag => ['mi', 'msup', 'mo', 'mrow', 'annotation', 'semantics', 'math', 'msub'].includes(tag)
+        }
       }
-    ]
-  ],
+    }
+  },
+  lang: 'zh-CN',
+  title: '软件测试知识库',
+  description: '软件测试知识学习笔记',
+  head: headConf,
+  plugins: pluginConf,
   themeConfig: {
-    nav: [
-      {
-        text: '首页',
-        link: '/'
-      },
-      {
-        text: '收藏',
-        link: '/website/'
-      },
-      {
-        text: '基础',
-        link: '/base/'
-      },
-      {
-        text: '工具',
-        link: '/tool/'
-      },
-      {
-        text: '测试',
-        link: '/test/'
-      },
-      {
-        text: '开发',
-        link: '/dev/'
-      }
-    ],
-    sidebar: utils.inferSiderbars(),
-    lastUpdated: '上次更新',
-    repo: 'devdiv/tschool',
+    logo: '/hero.png',
+    lastUpdatedText: '上次更新',
+    contributorsText: '贡献者',
+    docsRepo: 'devdiv/tshcool',
     editLinks: true,
+    editLinkText: '编辑文档！',
     docsDir: 'docs',
-    editLinkText: '在 GitHub 上编辑此页',
-    sidebarDepth: 3
+    docsBranch: 'master',
+    navbar: navConf,
+    sidebar: sidebarConf
   },
-  configureWebpack: {
-    resolve: {
-      alias: {
-        '@public': './public'
-      }
-    }
-  },
-  ga: 'UA-109340118-1',
   markdown: {
-    config: md => {
-      // use more markdown-it plugins!
-      md.use(require('markdown-it-include'))
+    importCode: {
+      handleImportPath: str => str.replace(/^@components/, path.resolve(__dirname, './components'))
+    },
+    code: {
+      lineNumbers: false
     }
+  },
+  extendsMarkdown(md) {
+    md.use(katex)
   }
 }
