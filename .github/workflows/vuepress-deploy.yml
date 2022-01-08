@@ -16,6 +16,7 @@ jobs:
       - name: Install and Build 🔧
         env:
           TZ: Asia/Shanghai
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           export GOOGLE_GA=${{ secrets.GOOGLE_GA }} GOOGLE_SEARCH_CONSOLE=${{ secrets.GOOGLE_SEARCH_CONSOLE }}
           git --no-pager log --oneline -n 20
