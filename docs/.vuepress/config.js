@@ -18,7 +18,7 @@ module.exports = {
   lang: 'zh-CN',
   title: '软件测试知识库',
   description: '软件测试知识学习笔记',
-  base: '/school/',
+  base: '/tschool/',
   head: headConf,
   plugins: pluginConf,
   themeConfig: {
