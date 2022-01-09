@@ -1,17 +1,18 @@
 # 收藏
 
-## 前端开发
+## 工具
+
++ [开往·下个世界](https://travellings.link)
++ [regex101](https://regex101.com/)
++ [regexr](https://regexr.com/)
+
+## 前端
 
 + [Can I use](https://caniuse.com/)
 + [JWT](https://jwt.io/)
 + [JSFiddle](https://jsfiddle.net/)
 + [CodeSandbox](https://codesandbox.io/)
 + [favicon](https://www.favicon.cc/?action=icon_list)
-
-## 正则
-
-+ [regex101](https://regex101.com/)
-+ [regexr](https://regexr.com/)
 
 ## CSS
 
@@ -30,12 +31,3 @@
 | icons8         | [icons8.com](https://icons8.com/)                            | 以前用的                                                     |
 | OpenGameArt    | [opengameart.org](https://opengameart.org)                   | 游戏图标，其中一款 [RPG](https://opengameart.org/content/98-pixel-art-rpg-icons) |
 | Emojipedia     | [https://emojipedia.org](https://emojipedia.org)             | emoji 图标                                                   |
-
-## 插画
-
-| 名称       | 网址                                                       | 说明         |
-| ---------- | ---------------------------------------------------------- | ------------ |
-| IRA Design | [iradesign.io](https://iradesign.io)                       | 色彩风格统一 |
-| unDraw     | [undraw.co/illustrations](https://undraw.co/illustrations) | 风格统一     |
-| Humaaans   | [www.humaaans.com](https://www.humaaans.com/)              | 人物         |
-| Pngtree    | [pngtree.com](https://pngtree.com)                         | 量大管饱     |
