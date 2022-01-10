@@ -1,7 +1,7 @@
 {
-  "name": "tschool",
+  "name": "school",
   "version": "0.1.1",
-  "description": "软件测试学习笔记",
+  "description": "不抛弃，不放弃",
   "private": true,
   "author": "devdiv",
   "license": "MIT",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/devdiv/tschool.git"
+    "url": "git+https://github.com/devdiv/school.git"
   },
   "devDependencies": {
     "@vuepress/plugin-google-analytics": "^2.0.0-beta.27",

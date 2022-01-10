@@ -1,13 +1,12 @@
 {
-  "name": "软件测试知识库",
-  "short_name": "软件测试",
-  "description": "软件测试学习笔记",
+  "name": "School",
+  "short_name": "school",
+  "description": "不抛弃，不放弃",
   "theme_color": "#2196f3",
   "background_color": "#2196f3",
   "display": "standalone",
   "start_url": "index.html",
-  "icons": [
-    {
+  "icons": [{
       "src": "/icons/icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png"

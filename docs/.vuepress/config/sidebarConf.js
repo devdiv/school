@@ -9,21 +9,20 @@ module.exports = {
         "README.md",
         "rfc.md",
         "体系结构.md",
-        "常用术语.md",
-        "红蓝对抗.md",
-        "网络拓扑.md"
+        "红蓝对抗.md"
       ]
     }
   ],
-  "/base/net/proto/": [
+  "/base/net/netlayer/": [
     {
-      "text": "PROTO",
-      "title": "PROTO",
+      "text": "NETLAYER",
+      "title": "NETLAYER",
       "collapsable": false,
       "sidebarDepth": 1,
       "children": [
         "README.md",
-        "ip.md"
+        "ip.md",
+        "route.md"
       ]
     }
   ],
