@@ -1,0 +1,1 @@
+const t={key:"v-3c74d39d",path:"/net/tcpip/basic/rfc.html",title:"\u6807\u51C6\u7EC4\u7EC7\u548CRFC",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1642340951e3,contributors:[{name:"devdiv",email:"837811650@qq,com",commits:1}]},filePathRelative:"net/tcpip/basic/rfc.md"};export{t as data};
