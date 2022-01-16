@@ -15,7 +15,7 @@
     "url": "git+https://github.com/devdiv/school.git"
   },
   "devDependencies": {
-    "@vuepress/plugin-google-analytics": "^2.0.0-beta.27",
+    "@vuepress/plugin-google-analytics": "^2.0.0-beta.32",
     "@vuepress/plugin-medium-zoom": "^2.0.0-beta.27",
     "@vuepress/plugin-pwa": "^2.0.0-beta.27",
     "@vuepress/plugin-pwa-popup": "^2.0.0-beta.27",

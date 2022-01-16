@@ -11,16 +11,21 @@ module.exports = [
       },
     },
   }],
-  ['@vuepress/google-analytics', {
-    id: process.env.GOOGLE_GA
+  ['@vuepress/plugin-google-analytics', {
+    id: 'UA-109340118-1'
   }],
   ["vuepress-plugin-auto-sidebar", {
     output: {
       filename: 'config/sidebarConf'
     },
     title: {
+      // 更多选项: 
+        // `default`、`lowercase`、`uppercase`、`capitalize`、`camelcase`、`kebabcase`、`titlecase`
       mode: "uppercase",
     },
+    git: {
+      trackStatus: 'all'
+    }
   }],
   ['@vuepress/plugin-search', {
     locales: {

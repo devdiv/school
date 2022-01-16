@@ -1,5 +1,5 @@
 module.exports = {
-  "/base/net/basic/": [
+  "/dev/python/basic/": [
     {
       "text": "BASIC",
       "title": "BASIC",
@@ -7,63 +7,20 @@ module.exports = {
       "sidebarDepth": 1,
       "children": [
         "README.md",
-        "rfc.md",
-        "体系结构.md",
-        "红蓝对抗.md"
+        "feature.md",
+        "slice.md"
       ]
     }
   ],
-  "/base/net/netlayer/": [
+  "/dev/python/module/": [
     {
-      "text": "NETLAYER",
-      "title": "NETLAYER",
+      "text": "MODULE",
+      "title": "MODULE",
       "collapsable": false,
       "sidebarDepth": 1,
       "children": [
         "README.md",
-        "ip.md",
-        "route.md"
-      ]
-    }
-  ],
-  "/base/os/linux/": [
-    {
-      "text": "LINUX",
-      "title": "LINUX",
-      "collapsable": false,
-      "sidebarDepth": 1,
-      "children": [
-        "README.md",
-        "cat.md",
-        "chmod.md",
-        "chown.md"
-      ]
-    }
-  ],
-  "/base/os/shell/": [
-    {
-      "text": "SHELL",
-      "title": "SHELL",
-      "collapsable": false,
-      "sidebarDepth": 1,
-      "children": [
-        "README.md",
-        "参数传递.md",
-        "变量.md",
-        "字符串.md",
-        "开始.md",
-        "数组.md"
-      ]
-    }
-  ],
-  "/dev/backend/python/": [
-    {
-      "text": "PYTHON",
-      "title": "PYTHON",
-      "collapsable": false,
-      "sidebarDepth": 1,
-      "children": [
-        "README.md",
+        "builtin.md",
         "impacket.md",
         "paramiko.md",
         "pyshark.md",
@@ -73,59 +30,10 @@ module.exports = {
       ]
     }
   ],
-  "/dev/backend/ruby/": [
+  "/net/dc/basic/": [
     {
-      "text": "RUBY",
-      "title": "RUBY",
-      "collapsable": false,
-      "sidebarDepth": 1,
-      "children": [
-        "README.md",
-        "CGI编程.md",
-        "Dir类和方法.md",
-        "File类和方法.md",
-        "保留字.md",
-        "变量.md",
-        "哈希.md",
-        "块.md",
-        "字符串.md",
-        "开始.md",
-        "异常.md",
-        "数组.md",
-        "文件.md",
-        "方法.md",
-        "时间.md",
-        "模块.md",
-        "正则表达式.md",
-        "环境.md",
-        "目录.md",
-        "类和对象.md",
-        "编码类型转换.md",
-        "范围.md",
-        "语句.md",
-        "运算符.md",
-        "迭代器.md"
-      ]
-    }
-  ],
-  "/more/reading/": [
-    {
-      "text": "READING",
-      "title": "READING",
-      "collapsable": false,
-      "sidebarDepth": 1,
-      "children": [
-        "README.md",
-        "瓦尔登湖.md",
-        "窄门.md",
-        "远山淡影.md"
-      ]
-    }
-  ],
-  "/tools/bookmark-scripts/": [
-    {
-      "text": "BOOKMARK-SCRIPTS",
-      "title": "BOOKMARK-SCRIPTS",
+      "text": "BASIC",
+      "title": "BASIC",
       "collapsable": false,
       "sidebarDepth": 1,
       "children": [
@@ -133,19 +41,87 @@ module.exports = {
       ]
     }
   ],
-  "/tools/chrome/": [
+  "/net/dc/trans/": [
     {
-      "text": "CHROME",
-      "title": "CHROME",
+      "text": "TRANS",
+      "title": "TRANS",
+      "collapsable": false,
+      "sidebarDepth": 1,
+      "children": [
+        "README.md"
+      ]
+    }
+  ],
+  "/net/sec/basic/": [
+    {
+      "text": "BASIC",
+      "title": "BASIC",
+      "collapsable": false,
+      "sidebarDepth": 1,
+      "children": [
+        "README.md"
+      ]
+    }
+  ],
+  "/net/sec/firewall/": [
+    {
+      "text": "FIREWALL",
+      "title": "FIREWALL",
+      "collapsable": false,
+      "sidebarDepth": 1,
+      "children": [
+        "README.md"
+      ]
+    }
+  ],
+  "/net/tcpip/basic/": [
+    {
+      "text": "BASIC",
+      "title": "BASIC",
       "collapsable": false,
       "sidebarDepth": 1,
       "children": [
         "README.md",
-        "edit-file-with-workspaces.md"
+        "rfc.md",
+        "router.md",
+        "体系结构.md",
+        "红蓝对抗.md"
       ]
     }
   ],
-  "/tools/git/": [
+  "/net/tcpip/netlayer/": [
+    {
+      "text": "NETLAYER",
+      "title": "NETLAYER",
+      "collapsable": false,
+      "sidebarDepth": 1,
+      "children": [
+        "README.md",
+        "arp.md",
+        "icmp.md",
+        "ip.md",
+        "iprouting.md",
+        "ipv4.md",
+        "ipv6.md",
+        "ospf.md",
+        "rip.md"
+      ]
+    }
+  ],
+  "/net/tcpip/translayer/": [
+    {
+      "text": "TRANSLAYER",
+      "title": "TRANSLAYER",
+      "collapsable": false,
+      "sidebarDepth": 1,
+      "children": [
+        "README.md",
+        "tcp.md",
+        "udp.md"
+      ]
+    }
+  ],
+  "/tools/dev/git/": [
     {
       "text": "GIT",
       "title": "GIT",
@@ -160,7 +136,7 @@ module.exports = {
       ]
     }
   ],
-  "/tools/github/": [
+  "/tools/dev/github/": [
     {
       "text": "GITHUB",
       "title": "GITHUB",
@@ -176,19 +152,7 @@ module.exports = {
       ]
     }
   ],
-  "/tools/google/": [
-    {
-      "text": "GOOGLE",
-      "title": "GOOGLE",
-      "collapsable": false,
-      "sidebarDepth": 1,
-      "children": [
-        "README.md",
-        "google-analytics.md"
-      ]
-    }
-  ],
-  "/tools/vscode/": [
+  "/tools/dev/vscode/": [
     {
       "text": "VSCODE",
       "title": "VSCODE",
@@ -208,7 +172,7 @@ module.exports = {
       ]
     }
   ],
-  "/tools/yum/": [
+  "/tools/dev/yum/": [
     {
       "text": "YUM",
       "title": "YUM",
@@ -216,6 +180,47 @@ module.exports = {
       "sidebarDepth": 1,
       "children": [
         "README.md"
+      ]
+    }
+  ],
+  "/tools/net/netwox/": [
+    {
+      "text": "NETWOX",
+      "title": "NETWOX",
+      "collapsable": false,
+      "sidebarDepth": 1,
+      "children": [
+        "README.md",
+        "arp.md",
+        "arp扫描.md",
+        "attack.md",
+        "ipv4.md"
+      ]
+    }
+  ],
+  "/tools/net/wireshark/": [
+    {
+      "text": "WIRESHARK",
+      "title": "WIRESHARK",
+      "collapsable": false,
+      "sidebarDepth": 1,
+      "children": [
+        "README.md",
+        "tshark手册.md"
+      ]
+    }
+  ],
+  "/more/reading/": [
+    {
+      "text": "READING",
+      "title": "READING",
+      "collapsable": false,
+      "sidebarDepth": 1,
+      "children": [
+        "README.md",
+        "瓦尔登湖.md",
+        "窄门.md",
+        "远山淡影.md"
       ]
     }
   ],
