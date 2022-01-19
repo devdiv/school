@@ -85,6 +85,7 @@ module.exports = {
         "rfc.md",
         "router.md",
         "体系结构.md",
+        "协议分析.md",
         "红蓝对抗.md"
       ]
     }
