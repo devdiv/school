@@ -54,25 +54,22 @@ module.exports = [{
   {
     text: '研发',
     children: [{
-      text: 'Python',
+      text: '测试',
       children: [{
           text: '基础',
-          link: '/dev/python/basic/'
-        }, {
-          text: '模块',
-          link: '/dev/python/module/'
+          link: '/dev/test/basic/'
         },
 
       ]
     }, {
-      text: '测试',
+      text: 'Python',
       children: [{
-          text: 'Vue',
-          link: '/dev/backend/python/'
+          text: '基础',
+          link: '/dev/python/basic/'
         },
         {
-          text: 'Vuetify',
-          link: '/dev/backend/ruby/'
+          text: '模块',
+          link: '/dev/python/module/'
         },
       ]
     }, ]
@@ -80,16 +77,22 @@ module.exports = [{
   {
     text: '管理',
     children: [{
-      text: '基础',
+      text: '理论域',
       children: [{
-          text: '过程组',
-          link: '/dev/backend/python/'
+          text: '五大过程',
+          link: '/manage/theory/process/'
         },
         {
-          text: '知识域',
-          link: '/dev/backend/ruby/'
+          text: '十大领域',
+          link: '/manage/theory/field/'
         },
       ]
+    }, {
+      text: '实践域',
+      children: [{
+        text: '人员管理',
+        link: '/manage/practice/people/'
+      }, ]
     }, ]
   },
   {

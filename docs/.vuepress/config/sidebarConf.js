@@ -30,6 +30,50 @@ module.exports = {
       ]
     }
   ],
+  "/dev/test/basic/": [
+    {
+      "text": "BASIC",
+      "title": "BASIC",
+      "collapsable": false,
+      "sidebarDepth": 1,
+      "children": [
+        "README.md"
+      ]
+    }
+  ],
+  "/manage/practice/people/": [
+    {
+      "text": "PEOPLE",
+      "title": "PEOPLE",
+      "collapsable": false,
+      "sidebarDepth": 1,
+      "children": [
+        "README.md"
+      ]
+    }
+  ],
+  "/manage/theory/field/": [
+    {
+      "text": "FIELD",
+      "title": "FIELD",
+      "collapsable": false,
+      "sidebarDepth": 1,
+      "children": [
+        "README.md"
+      ]
+    }
+  ],
+  "/manage/theory/process/": [
+    {
+      "text": "PROCESS",
+      "title": "PROCESS",
+      "collapsable": false,
+      "sidebarDepth": 1,
+      "children": [
+        "README.md"
+      ]
+    }
+  ],
   "/net/dc/basic/": [
     {
       "text": "BASIC",
@@ -83,10 +127,11 @@ module.exports = {
       "children": [
         "README.md",
         "rfc.md",
-        "router.md",
         "体系结构.md",
         "协议分析.md",
-        "红蓝对抗.md"
+        "协议识别.md",
+        "红蓝对抗.md",
+        "路由基础.md"
       ]
     }
   ],
@@ -98,14 +143,15 @@ module.exports = {
       "sidebarDepth": 1,
       "children": [
         "README.md",
-        "arp.md",
-        "icmp.md",
-        "ip.md",
-        "iprouting.md",
-        "ipv4.md",
-        "ipv6.md",
-        "ospf.md",
-        "rip.md"
+        "1-ip.md",
+        "2-ipv4.md",
+        "3-ipv6.md",
+        "4-arp.md",
+        "5-icmp.md",
+        "6-rip.md",
+        "7-ospf.md",
+        "8-bgp.md",
+        "999-exercise.md"
       ]
     }
   ],
@@ -119,6 +165,28 @@ module.exports = {
         "README.md",
         "tcp.md",
         "udp.md"
+      ]
+    }
+  ],
+  "/net/tech/eth/": [
+    {
+      "text": "ETH",
+      "title": "ETH",
+      "collapsable": false,
+      "sidebarDepth": 1,
+      "children": [
+        "README.md"
+      ]
+    }
+  ],
+  "/net/tech/lan/": [
+    {
+      "text": "LAN",
+      "title": "LAN",
+      "collapsable": false,
+      "sidebarDepth": 1,
+      "children": [
+        "README.md"
       ]
     }
   ],
