@@ -1,42 +1,59 @@
 :root {
-  // --c-brand: #04b93b !important;
   --c-brand: #2486b9 !important;
-
+  --code-c-line-number: #8b949e;
 }
 
-// code icon
-.theme-default-content pre,
-.theme-default-content pre[class*="language-"] {
-  padding: 1.8rem 1.5rem 1.25rem;
+[data-theme='dark'] {
+  --code-c-line-number: #6e7681;
 }
 
-div[class*="language-"]::after,
-pre[class*="language-"]::after,
 pre[class*="language-"]::before {
   content: '';
   height: 10px;
   width: 10px;
   position: absolute;
   top: 12px;
-  left: 3.7rem;
-  border-radius: 50%;
-  display: inline-block;
-  background: #ff4742;
-}
-
-pre[class*="language-"]::before {
   left: 1.5rem;
+  border-radius: 50%;
   background: #b300eb;
+  box-shadow: 1.1rem 0 0 0 #fcd019, 2.2rem 0 0 0 #ff4742;
+  z-index: 3;
 }
 
-pre[class*="language-"]::after {
-  left: 2.6rem;
-  background: #fcd019;
+.theme-default-content pre,
+.theme-default-content pre[class*="language-"] {
+  padding: 1.8rem 1.5rem 1.25rem;
+}
+
+div[class*="language-"] {
+  max-height: 32rem;
+  overflow-y: auto;
+}
+
+div[class*="language-"]::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+div[class*="language-"]::-webkit-scrollbar-thumb {
+  background: rgba(127, 127, 127, 0.3);
+  border-radius: 3px;
+}
+
+div[class*="language-"]::-webkit-scrollbar-thumb:hover {
+  background: rgba(127, 127, 127, 0.5);
+}
+
+div[class*="language-"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+div[class*="language-"].line-numbers-mode::after {
+  border-right-color: rgba(127, 127, 127, 0.15) !important;
 }
 
 #app {
 
-  // home
   .home .hero img {
     border-radius: 1rem;
   }
@@ -45,7 +62,6 @@ pre[class*="language-"]::after {
     border-radius: 4px;
   }
 
-  // page
   .page {
     background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACFJREFUeNpiZGBg4GegAsBlCD8TqSYNQg2Mo6FEBAAIMACdPABtrSW/IQAAAABJRU5ErkJggg==");
     background-repeat: repeat;
@@ -57,7 +73,6 @@ pre[class*="language-"]::after {
     }
   }
 
-  // link
   a.sidebar-item.active {
     background: linear-gradient(90deg, var(--c-text-accent), transparent 18%);
   }

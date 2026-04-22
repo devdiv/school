@@ -1,8 +1,9 @@
 {
   "name": "school",
   "version": "0.1.1",
-  "description": "不抛弃，不放弃",
+  "description": "AI测试架构师知识库",
   "private": true,
+  "type": "module",
   "author": "devdiv",
   "license": "MIT",
   "scripts": {
@@ -15,18 +16,19 @@
     "url": "git+https://github.com/devdiv/school.git"
   },
   "devDependencies": {
-    "@vuepress/plugin-google-analytics": "^2.0.0-beta.32",
-    "@vuepress/plugin-medium-zoom": "^2.0.0-beta.27",
-    "@vuepress/plugin-pwa": "^2.0.0-beta.27",
-    "@vuepress/plugin-pwa-popup": "^2.0.0-beta.27",
-    "@vuepress/plugin-register-components": "^2.0.0-beta.27",
-    "@vuepress/plugin-search": "^2.0.0-beta.27",
-    "vuepress": "^2.0.0-beta.27",
-    "vuepress-vite": "^2.0.0-beta.27"
+    "@vuepress/bundler-vite": "next",
+    "@vuepress/plugin-google-analytics": "next",
+    "@vuepress/plugin-prismjs": "next",
+    "@vuepress/plugin-medium-zoom": "next",
+    "@vuepress/plugin-pwa": "next",
+    "@vuepress/plugin-register-components": "next",
+    "@vuepress/plugin-search": "next",
+    "@vuepress/theme-default": "next",
+    "sass-embedded": "^1.99.0",
+    "vuepress": "next"
   },
   "dependencies": {
     "@iconify/vue": "^3.1.0",
-    "dotenv": "^10.0.0",
-    "vuepress-plugin-auto-sidebar": "^2.4.0-alpha.4"
+    "dotenv": "^16.0.0"
   }
 }

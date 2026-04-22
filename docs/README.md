@@ -1,21 +1,21 @@
 ---
 home: true
-title: Home
+title: 首页
 heroImage: /images/hero.png
 actions:
   - text: 开始学习
-    link: /base/net/basic/
+    link: /ai-testing/
     type: primary
-  - text: 学习更多
-    link: /more/website.html/
+  - text: 测试框架
+    link: /frameworks/
     type: secondary
 features:
-  - title: 乐观
-    details: 多给自己积极的心理暗示，凡是往好处想，以积极的心态寻求自身及环境的改变。
-  - title: 宽厚
-    details: 宽厚仁慈，不过于苛求，用宽容化解矛盾与冲突，不为小事争执，营造内心的和谐。 
-  - title: 感恩
-    details: 原谅生活的不完美，用感激替代抱怨，珍惜拥有的一切，真诚感谢生活，滴水之恩，当涌泉相报。
+  - title: AI驱动测试
+    details: 构建AI原生测试平台，实现从脚本自动化到自主决策体的演进，多智能体协同测试。
+  - title: LLM/VLM工程化
+    details: 大模型应用架构、多模态UI测试、测试脚本自愈体系，实现智能化测试全流程。
+  - title: 全栈技术能力
+    details: 涵盖测试框架、视觉融合、稳定性测试、服务端开发、系统架构等完整技术栈。
 
-footer: MIT Licensed | Copyright © 2020-2022 DevDiv
+footer: MIT Licensed | Copyright © 2024-2026 AI测试架构师知识库
 ---
