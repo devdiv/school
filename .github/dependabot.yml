@@ -7,7 +7,6 @@ updates:
     open-pull-requests-limit: 10
     ignore:
       - dependency-name: "serialize-javascript"
-        reason: "等待上游 @rollup/plugin-terser 更新以支持 serialize-javascript@7.x"
 
   - package-ecosystem: "github-actions"
     directory: "/"
