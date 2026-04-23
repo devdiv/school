@@ -1084,3 +1084,151 @@ jobs:
 - [UI自动化测试框架](/frameworks/ui/) - Playwright、Selenium、Cypress
 - [API测试框架](/frameworks/api/) - Pytest+Requests、Postman
 - [性能测试框架](/frameworks/performance/) - JMeter、K6、Locust
+
+## 核心技术学习资源
+
+### UI 自动化测试
+
+#### Playwright
+- [Playwright 官方文档](https://playwright.dev/) - 完整文档与 API 参考
+- [Playwright GitHub](https://github.com/microsoft/playwright) - 源码仓库
+- [Playwright 测试最佳实践](https://playwright.dev/python/docs/best-practices) - 官方最佳实践
+- [Playwright 中文教程](https://www.cnblogs.com/df888/tag/Playwright/) - 中文学习资源
+
+#### Selenium
+- [Selenium 官方文档](https://www.selenium.dev/documentation/) - 完整文档
+- [Selenium GitHub](https://github.com/SeleniumHQ/selenium) - 源码仓库
+- [Selenium with Python](https://selenium-python.readthedocs.io/) - Python 绑定文档
+- [Selenium 设计模式](https://www.selenium.dev/documentation/test_practices/) - 测试设计模式
+
+#### Cypress
+- [Cypress 官方文档](https://docs.cypress.io/) - 完整文档
+- [Cypress GitHub](https://github.com/cypress-io/cypress) - 源码仓库
+- [Cypress 最佳实践](https://docs.cypress.io/guides/references/best-practices) - 官方指南
+- [Cypress 实战教程](https://learn.cypress.io/) - 官方学习平台
+
+#### Appium
+- [Appium 官方文档](http://appium.io/docs/en/latest/) - 移动端测试文档
+- [Appium GitHub](https://github.com/appium/appium) - 源码仓库
+- [Appium Pro](https://appiumpro.com/) - 高级教程
+- [Appium 中文社区](https://testerhome.com/topics/node68) - 中文资源
+
+### API 测试
+
+#### Pytest
+- [Pytest 官方文档](https://docs.pytest.org/) - 完整文档
+- [Pytest GitHub](https://github.com/pytest-dev/pytest) - 源码仓库
+- [Pytest 最佳实践](https://docs.pytest.org/en/stable/goodpractices.html) - 官方指南
+- [Pytest 插件列表](https://docs.pytest.org/en/stable/reference/plugin_list.html) - 插件生态
+
+#### Requests
+- [Requests 官方文档](https://requests.readthedocs.io/) - HTTP 库文档
+- [Requests GitHub](https://github.com/psf/requests) - 源码仓库
+- [Requests 快速上手](https://requests.readthedocs.io/en/latest/user/quickstart/) - 入门指南
+
+#### Postman
+- [Postman 官方文档](https://learning.postman.com/) - 完整学习文档
+- [Postman 学习中心](https://learning.postman.com/docs/getting-started/introduction/) - 入门教程
+- [Newman CLI](https://github.com/postmanlabs/newman) - 命令行工具
+- [Postman API 测试教程](https://www.postman.com/api-platform/api-testing/) - API 测试指南
+
+#### REST Assured
+- [REST Assured GitHub](https://github.com/rest-assured/rest-assured) - Java API 测试框架
+- [REST Assured Wiki](https://github.com/rest-assured/rest-assured/wiki) - 使用指南
+- [REST Assured 教程](https://www.baeldung.com/rest-assured-tutorial) - Baeldung 教程
+
+### 性能测试
+
+#### JMeter
+- [JMeter 官方文档](https://jmeter.apache.org/usermanual/index.html) - 完整用户手册
+- [JMeter GitHub](https://github.com/apache/jmeter) - 源码仓库
+- [JMeter 性能测试指南](https://jmeter.apache.org/usermanual/best-practices.html) - 最佳实践
+- [JMeter 中文教程](https://www.cnblogs.com/imyalost/p/7062772.html) - 中文入门
+
+#### K6
+- [K6 官方文档](https://grafana.com/docs/k6/latest/) - 完整文档
+- [K6 GitHub](https://github.com/grafana/k6) - 源码仓库
+- [K6 学习中心](https://grafana.com/docs/k6/latest/testing-guides/) - 测试指南
+- [K6 示例脚本](https://grafana.com/docs/k6/latest/examples/) - 代码示例
+
+#### Locust
+- [Locust 官方文档](https://docs.locust.io/) - Python 性能测试框架
+- [Locust GitHub](https://github.com/locustio/locust) - 源码仓库
+- [Locust 教程](https://docs.locust.io/en/stable/writing-a-locustfile.html) - 编写测试脚本
+
+#### Gatling
+- [Gatling 官方文档](https://docs.gatling.io/) - Scala 性能测试框架
+- [Gatling GitHub](https://github.com/gatling/gatling) - 源码仓库
+- [Gatling 入门教程](https://docs.gatling.io/tutorials/) - 官方教程
+
+### 云原生测试
+
+#### Testkube
+- [Testkube 官方文档](https://docs.testkube.io/) - K8s 测试框架
+- [Testkube GitHub](https://github.com/kubeshop/testkube) - 源码仓库
+- [Kubernetes 测试指南](https://docs.testkube.io/guides/) - 测试指南
+
+#### Chaos Engineering
+- [ChaosBlade 文档](https://chaosblade.io/docs/) - 阿里混沌工程工具
+- [Chaos Mesh 文档](https://chaos-mesh.org/docs/) - PingCAP 混沌工程
+- [Litmus 文档](https://litmuschaos.github.io/litmus/) - 云原生混沌工程
+
+### 安全测试
+
+#### OWASP ZAP
+- [OWASP ZAP 官方文档](https://www.zaproxy.org/docs/) - 安全测试工具
+- [OWASP ZAP GitHub](https://github.com/zaproxy/zaproxy) - 源码仓库
+- [OWASP Top 10](https://owasp.org/www-project-top-ten/) - Web 安全风险
+
+#### 安全测试资源
+- [OWASP 测试指南](https://owasp.org/www-project-web-security-testing-guide/) - Web 安全测试
+- [PortSwigger Academy](https://portswigger.net/web-security) - Web 安全学院
+- [Hacker101](https://www.hacker101.com/) - 免费安全课程
+
+### 移动端测试
+
+#### Appium 生态
+- [Appium Desktop](https://github.com/appium/appium-desktop) - GUI 工具
+- [Appium Inspector](https://github.com/appium/appium-inspector) - 元素检查器
+- [Appium Flutter Driver](https://github.com/appium-userland/appium-flutter-driver) - Flutter 测试
+
+#### 移动测试资源
+- [Google Android Testing](https://developer.android.com/training/testing) - Android 官方测试指南
+- [Apple Testing](https://developer.apple.com/documentation/xctest) - iOS 测试框架
+- [Mobile Testing Guide](https://mobiletestingguide.com/) - 移动测试指南
+
+### 测试设计模式
+
+#### Page Object Model
+- [Selenium POM 指南](https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/) - 官方指南
+- [Martin Fowler POM](https://martinfowler.com/bliki/PageObject.html) - 设计模式详解
+- [Playwright POM](https://playwright.dev/python/docs/pom) - Playwright 实现
+
+#### 测试架构
+- [测试金字塔](https://martinfowler.com/articles/practical-test-pyramid.html) - Martin Fowler 经典文章
+- [测试策略设计](https://www.thoughtworks.com/insights/blog/test-strategy) - ThoughtWorks 指南
+- [测试代码重构](https://refactoring.guru/refactoring) - 重构技巧
+
+### 持续集成
+
+#### GitHub Actions
+- [GitHub Actions 文档](https://docs.github.com/en/actions) - 官方文档
+- [GitHub Actions 市场](https://github.com/marketplace?type=actions) - Actions 市场
+- [测试工作流示例](https://github.com/actions/starter-workflows) - 工作流模板
+
+#### Jenkins
+- [Jenkins 官方文档](https://www.jenkins.io/doc/) - 完整文档
+- [Jenkins Pipeline](https://www.jenkins.io/doc/book/pipeline/) - Pipeline 指南
+- [Jenkins 测试集成](https://www.jenkins.io/doc/tutorials/) - 集成教程
+
+### 测试报告
+
+#### Allure
+- [Allure 官方文档](https://docs.qameta.io/allure/) - 测试报告框架
+- [Allure GitHub](https://github.com/allure-framework/allure2) - 源码仓库
+- [Allure Pytest 集成](https://docs.qameta.io/allure/#_pytest) - Pytest 插件
+
+#### 其他报告工具
+- [pytest-html](https://github.com/pytest-dev/pytest-html) - HTML 报告插件
+- [Mochawesome](https://github.com/adamgruber/mochawesome) - JavaScript 测试报告
+- [ReportPortal](https://reportportal.io/) - 测试分析平台

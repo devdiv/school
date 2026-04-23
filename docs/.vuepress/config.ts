@@ -52,19 +52,19 @@ export default {
       ]}
     ],
     sidebar: {
-      '/ai-testing/': [{ text: '', collapsable: false, children: ['', 'platform/', 'agentic/', 'shift-left/'] }],
-      '/llm-vlm/': [{ text: '', collapsable: false, children: ['', 'llm-app/', 'vlm/', 'self-healing/'] }],
-      '/frameworks/': [{ text: '', collapsable: false, children: ['', 'ai-native/', 'ui/', 'api/', 'performance/', 'cloud-native/', 'chaos/', 'security/', 'mobile/'] }],
+      '/ai-testing/': [{ text: '', collapsable: false, children: ['', 'platform/', 'agentic/', 'agent-evaluation/', 'shift-left/'] }],
+      '/llm-vlm/': [{ text: '', collapsable: false, children: ['', 'llm-app/', 'vlm/', 'model-evaluation/', 'self-healing/'] }],
+      '/frameworks/': [{ text: '', collapsable: false, children: ['', 'ai-native/', 'ui/', 'api/', 'performance/', 'cloud-native/', 'chaos/', 'security/', 'mobile/', 'mobile-specialized/'] }],
       '/vision-physical/': [{ text: '', collapsable: false, children: ['', 'cv/', 'detection/', 'robotic/'] }],
       '/stability/': [{ text: '', collapsable: false, children: ['', 'performance/', 'log-analysis/', 'diagnosis/'] }],
       '/server-platform/': [{ text: '', collapsable: false, children: ['', 'programming/', 'cloud-infra/', 'data/'] }],
-      '/architecture/': [{ text: '', collapsable: false, children: ['', 'distributed/', 'platform-evolution/', 'metrics/'] }],
+      '/architecture/': [{ text: '', collapsable: false, children: ['', 'distributed/', 'platform-evolution/', 'metrics/', 'quality-platform/', 'cicd-integration/'] }],
       '/frontier/': [{ text: '', collapsable: false, children: ['', 'web3/', 'embodied-ai/', 'compliance/'] }],
       '/soft-skills/': [{ text: '', collapsable: false, children: ['', 'leadership/', 'problem-solving/', 'communication/'] }],
     }
   }),
   lang: 'zh-CN',
-  title: 'AI测试架构师知识库',
+  title: 'AI测试架构知识库',
   description: '构建AI原生测试平台，实现智能化测试全流程',
   base: '/school/',
   head: [

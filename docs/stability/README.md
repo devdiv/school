@@ -772,3 +772,123 @@ class AvailabilityCalculator:
 ## 相关资源
 
 - [混沌工程实践](/frameworks/chaos/) - 故障注入、混沌实验
+
+## 核心技术学习资源
+
+### 性能测试
+
+#### JMeter
+- [JMeter 官方文档](https://jmeter.apache.org/usermanual/index.html) - 完整用户手册
+- [JMeter GitHub](https://github.com/apache/jmeter) - 源码仓库
+- [JMeter 性能测试实战](https://www.cnblogs.com/imyalost/p/7062772.html) - 中文教程
+- [BlazeMeter University](https://www.blazemeter.com/university) - JMeter 培训
+
+#### K6
+- [K6 官方文档](https://grafana.com/docs/k6/latest/) - 完整文档
+- [K6 GitHub](https://github.com/grafana/k6) - 源码仓库
+- [K6 学习中心](https://grafana.com/docs/k6/latest/testing-guides/) - 测试指南
+- [K6 示例脚本](https://grafana.com/docs/k6/latest/examples/) - 代码示例
+
+#### Locust
+- [Locust 官方文档](https://docs.locust.io/) - Python 性能测试框架
+- [Locust GitHub](https://github.com/locustio/locust) - 源码仓库
+- [Locust 教程](https://docs.locust.io/en/stable/writing-a-locustfile.html) - 编写测试脚本
+
+### 混沌工程
+
+#### 混沌工程原理
+- [混沌工程原则](https://principlesofchaos.org/) - 官方原则
+- [Chaos Engineering Book](https://www.oreilly.com/library/view/chaos-engineering/9781491988459/) - O'Reilly 书籍
+- [Chaos Engineering: The Book](https://www.manning.com/books/chaos-engineering) - Manning 出版
+
+#### 混沌工程工具
+- [ChaosBlade 文档](https://chaosblade.io/docs/) - 阿里混沌工程工具
+- [Chaos Mesh 文档](https://chaos-mesh.org/docs/) - PingCAP 混沌工程
+- [Litmus 文档](https://litmuschaos.github.io/litmus/) - 云原生混沌工程
+- [Gremlin](https://www.gremlin.com/docs/) - 商业混沌工程平台
+
+### 可靠性工程
+
+#### SRE 实践
+- [Google SRE 书籍](https://sre.google/sre-book/table-of-contents/) - SRE 经典
+- [Site Reliability Workbook](https://sre.google/workbook/table-of-contents/) - SRE 实践
+- [Building Secure & Reliable Systems](https://sre.google/building-secure-reliable-systems/) - 安全可靠系统
+- [The Site Reliability Workbook](https://sre.google/workbook/) - 工作手册
+
+#### SLI/SLO/SLA
+- [SLO 文档](https://sre.google/sre-book/service-level-objectives/) - Google SLO 指南
+- [The Art of SLOs](https://sre.google/workbook/implementing-slos/) - SLO 实践
+- [Error Budget](https://sre.google/sre-book/embracing-risk/) - 错误预算
+
+### 监控与可观测性
+
+#### Prometheus
+- [Prometheus 官方文档](https://prometheus.io/docs/introduction/overview/) - 监控系统
+- [Prometheus GitHub](https://github.com/prometheus/prometheus) - 源码仓库
+- [Prometheus 最佳实践](https://prometheus.io/docs/practices/) - 实践指南
+
+#### Grafana
+- [Grafana 官方文档](https://grafana.com/docs/grafana/latest/) - 可视化平台
+- [Grafana Labs](https://grafana.com/) - 官网
+- [Grafana Dashboard](https://grafana.com/grafana/dashboards/) - 仪表板市场
+
+#### OpenTelemetry
+- [OpenTelemetry 官方文档](https://opentelemetry.io/docs/) - 可观测性标准
+- [OpenTelemetry GitHub](https://github.com/open-telemetry) - 源码仓库
+- [OTel 规范](https://opentelemetry.io/docs/reference/specification/) - 规范文档
+
+### 容灾与高可用
+
+#### 容灾架构
+- [AWS 灾难恢复](https://aws.amazon.com/blogs/architecture/disaster-recovery-dr-architecture-on-aws-part-i-strategies-for-recovery-in-the-cloud/) - AWS DR 指南
+- [阿里云容灾方案](https://www.alibabacloud.com/zh/solutions/disaster-recovery) - 阿里云 DR
+- [多活架构设计](https://www.infoq.cn/article/multi-active-architecture) - 多活架构
+
+#### 高可用设计
+- [高可用架构设计](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/) - DDIA 书籍
+- [Release It!](https://pragprog.com/titles/mnee2/release-it-second-edition/) - 软件发布实践
+- [Patterns of Enterprise Application Architecture](https://martinfowler.com/books/eaa.html) - 企业架构模式
+
+### 性能优化
+
+#### 系统性能
+- [Systems Performance](https://www.brendangregg.com/systems-performance-book.html) - 系统性能书籍
+- [BPF Performance Tools](http://www.brendangregg.com/bpf-performance-tools-book.html) - BPF 工具
+- [Linux Performance](http://www.brendangregg.com/linuxperf.html) - Linux 性能分析
+
+#### 数据库性能
+- [高性能 MySQL](https://book.douban.com/subject/23008813/) - MySQL 优化
+- [PostgreSQL 性能优化](https://www.postgresql.org/docs/current/performance-tips.html) - PG 性能
+- [Redis 性能优化](https://redis.io/docs/management/optimization/) - Redis 优化
+
+### 容量规划
+
+#### 容量管理
+- [Capacity Planning](https://blog.bytebytego.com/p/ep60-system-design-capacity-planning) - 容量规划指南
+- [Scalability for Dummies](https://www.lecloud.net/tagged/scalability) - 可扩展性入门
+- [Scalable Web Architecture](https://www.aosabook.org/en/distsys.html) - 分布式系统架构
+
+### 故障诊断
+
+#### 日志分析
+- [ELK Stack 文档](https://www.elastic.co/guide/index.html) - 日志分析平台
+- [Fluentd 文档](https://docs.fluentd.org/) - 日志收集
+- [Loki 文档](https://grafana.com/docs/loki/latest/) - 日志聚合
+
+#### 链路追踪
+- [Jaeger 官方文档](https://www.jaegertracing.io/docs/) - 分布式追踪
+- [Zipkin 文档](https://zipkin.io/pages/documentation.html) - 链路追踪
+- [SkyWalking 文档](https://skywalking.apache.org/docs/) - APM 系统
+
+### 社区资源
+
+#### 技术博客
+- [Google SRE Blog](https://sre.google/blog/) - SRE 博客
+- [Netflix Tech Blog](https://netflixtechblog.com/) - Netflix 技术
+- [Uber Engineering](https://www.uber.com/blog/engineering/) - Uber 工程
+- [Cloudflare Blog](https://blog.cloudflare.com/) - Cloudflare 技术
+
+#### 社区
+- [SRE Weekly](https://sreweekly.com/) - SRE 周刊
+- [DevOps Weekly](https://www.devopsweekly.com/) - DevOps 周刊
+- [High Scalability](http://highscalability.com/) - 高扩展性博客

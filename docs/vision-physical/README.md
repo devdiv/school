@@ -895,3 +895,110 @@ class CrossBrowserValidator:
 ## 相关资源
 
 - [计算机视觉基础](/vision-physical/cv/) - 图像处理、特征检测、OCR识别
+
+## 核心技术学习资源
+
+### 计算机视觉基础
+
+#### 经典教材
+- [计算机视觉：算法与应用](https://book.douban.com/subject/10465997/) - Szeliski 经典教材
+- [OpenCV 官方文档](https://docs.opencv.org/4.x/) - OpenCV 完整文档
+- [Learn OpenCV](https://learnopencv.com/) - OpenCV 实战教程
+- [PyImageSearch](https://pyimagesearch.com/) - Python 计算机视觉教程
+
+#### 在线课程
+- [CS231n: CNN for Visual Recognition](http://cs231n.stanford.edu/) - 斯坦福计算机视觉课程
+- [Deep Learning for Computer Vision](https://www.pyimagesearch.com/deep-learning-computer-vision-python-book/) - 深度学习视觉
+- [Computer Vision Basics - Coursera](https://www.coursera.org/learn/computer-vision-basics) - 计算机视觉基础
+
+### 深度学习视觉
+
+#### 目标检测
+- [YOLO 官方网站](https://pjreddie.com/darknet/yolo/) - YOLO 目标检测
+- [Faster R-CNN 论文](https://arxiv.org/abs/1506.01497) - 两阶段检测
+- [Detectron2 文档](https://detectron2.readthedocs.io/) - Facebook 检测框架
+- [MMDetection](https://github.com/open-mmlab/mmdetection) - 开源目标检测工具箱
+
+#### 图像分割
+- [U-Net 论文](https://arxiv.org/abs/1505.04597) - 图像分割经典
+- [Segment Anything (SAM)](https://segment-anything.com/) - Meta 分割模型
+- [DeepLab 论文](https://arxiv.org/abs/1606.00915) - 语义分割
+
+#### OCR 文字识别
+- [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) - 开源 OCR 引擎
+- [PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR) - 百度 OCR 工具
+- [EasyOCR](https://github.com/JaidedAI/EasyOCR) - 多语言 OCR
+- [TrOCR 论文](https://arxiv.org/abs/2109.10282) - Transformer OCR
+
+### 视觉测试工具
+
+#### 视觉回归测试
+- [Percy](https://percy.io/) - 视觉回归测试平台
+- [Applitools](https://applitools.com/) - AI 视觉测试
+- [BackstopJS](https://github.com/garris/BackstopJS) - CSS 视觉回归
+- [Lost Pixel](https://lost-pixel.com/) - 开源视觉测试
+
+#### 截图对比
+- [pixelmatch](https://github.com/mapbox/pixelmatch) - 像素对比库
+- [looks-same](https://github.com/gemini-testing/looks-same) - 图像对比
+- [rembrandt](https://github.com/rawify/rembrandt.js) - 图像差异检测
+
+### 图像处理
+
+#### OpenCV
+- [OpenCV Python 教程](https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html) - 官方教程
+- [OpenCV GitHub](https://github.com/opencv/opencv) - 源码仓库
+- [Learn OpenCV 中文](https://www.cnblogs.com/skyfsm/category/1141580.html) - 中文教程
+
+#### 图像处理库
+- [Pillow 文档](https://pillow.readthedocs.io/) - Python 图像库
+- [scikit-image](https://scikit-image.org/) - 图像处理
+- [ImageMagick](https://imagemagick.org/index.php) - 命令行图像处理
+
+### UI 自动化视觉
+
+#### Playwright 视觉测试
+- [Playwright 视觉对比](https://playwright.dev/python/docs/test-snapshots) - 截图对比
+- [Playwright 截图 API](https://playwright.dev/python/docs/api/class-page#page-screenshot) - 截图文档
+
+#### Selenium 视觉测试
+- [Selenium 截图](https://www.selenium.dev/documentation/webdriver/browser/windows/) - 截图文档
+- [Selenium Visual Testing](https://www.selenium.dev/documentation/test_practices/visual_testing/) - 视觉测试指南
+
+### 多模态模型
+
+#### 视觉语言模型
+- [CLIP 论文](https://arxiv.org/abs/2103.00020) - 图文对比学习
+- [GPT-4V](https://openai.com/research/gpt-4v-system-card) - GPT-4 视觉
+- [LLaVA](https://llava-vl.github.io/) - 开源多模态模型
+- [Florence-2](https://huggingface.co/microsoft/Florence-2-large) - 微软视觉模型
+
+#### UI 理解
+- [GPT-4V UI 测试](https://platform.openai.com/docs/guides/vision) - OpenAI 视觉 API
+- [Claude Vision](https://www.anthropic.com/claude) - Claude 视觉能力
+- [Gemini Vision](https://deepmind.google/technologies/gemini/) - Google 多模态
+
+### 机器人与自动化
+
+#### 机器人视觉
+- [ROS 官方文档](http://wiki.ros.org/) - 机器人操作系统
+- [Robot Vision](https://www.ros.org/wiki/robot_vision) - 机器人视觉
+- [OpenCV Robotics](https://opencv.org/robotics/) - OpenCV 机器人应用
+
+#### 自动化测试设备
+- [Appium 设备测试](http://appium.io/docs/en/latest/) - 移动设备测试
+- [BrowserStack](https://www.browserstack.com/) - 云端设备测试
+- [Sauce Labs](https://saucelabs.com/) - 云测试平台
+
+### 学术资源
+
+#### 顶会论文
+- [CVPR](https://cvpr.thecvf.com/) - 计算机视觉顶会
+- [ICCV](https://iccv.thecvf.com/) - 国际计算机视觉会议
+- [ECCV](https://eccv2024.eu/) - 欧洲计算机视觉会议
+- [SIGGRAPH](https://www.siggraph.org/) - 图形学顶会
+
+#### 论文资源
+- [arXiv cs.CV](https://arxiv.org/list/cs.CV/recent) - 计算机视觉论文
+- [Papers With Code - CV](https://paperswithcode.com/area/computer-vision) - 论文与代码
+- [Google Scholar CV](https://scholar.google.com/citations?view_op=top_venues&vq=eng_computervision) - 高引论文

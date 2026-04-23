@@ -396,3 +396,122 @@ class DatabaseTester:
 
 - [API测试框架](/frameworks/api/) - Pytest+Requests、Postman
 - [性能测试框架](/frameworks/performance/) - JMeter、K6
+
+## 核心技术学习资源
+
+### API 测试
+
+#### REST API
+- [RESTful API 设计指南](https://restfulapi.net/) - REST API 最佳实践
+- [API 测试教程](https://www.postman.com/api-platform/api-testing/) - Postman 官方教程
+- [HTTP 协议详解](https://developer.mozilla.org/zh-CN/docs/Web/HTTP) - MDN HTTP 文档
+
+#### GraphQL
+- [GraphQL 官方文档](https://graphql.org/learn/) - GraphQL 学习
+- [Apollo GraphQL](https://www.apollographql.com/docs/) - Apollo 框架
+- [GraphQL 测试](https://graphql.org/learn/testing/) - GraphQL 测试指南
+
+#### gRPC
+- [gRPC 官方文档](https://grpc.io/docs/) - gRPC 完整文档
+- [gRPC GitHub](https://github.com/grpc/grpc) - 源码仓库
+- [gRPC 快速入门](https://grpc.io/docs/languages/python/quickstart/) - Python 快速入门
+
+### 数据库测试
+
+#### 关系型数据库
+- [MySQL 官方文档](https://dev.mysql.com/doc/) - MySQL 文档
+- [PostgreSQL 官方文档](https://www.postgresql.org/docs/) - PostgreSQL 文档
+- [SQL 测试最佳实践](https://use-the-index-luke.com/) - SQL 优化
+
+#### NoSQL 数据库
+- [MongoDB 官方文档](https://www.mongodb.com/docs/) - MongoDB 文档
+- [Redis 官方文档](https://redis.io/docs/) - Redis 文档
+- [Elasticsearch 官方文档](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html) - ES 文档
+
+#### 数据库测试工具
+- [DBUnit](https://dbunit.sourceforge.net/) - 数据库测试框架
+- [TestContainers](https://www.testcontainers.org/) - 容器化测试
+- [Flyway](https://flywaydb.org/documentation/) - 数据库迁移
+- [Liquibase](https://www.liquibase.org/get-started) - 数据库版本控制
+
+### 中间件测试
+
+#### 消息队列
+- [Kafka 官方文档](https://kafka.apache.org/documentation/) - Kafka 文档
+- [RabbitMQ 官方文档](https://www.rabbitmq.com/docs) - RabbitMQ 文档
+- [RocketMQ 官方文档](https://rocketmq.apache.org/zh/docs/) - RocketMQ 文档
+
+#### 缓存系统
+- [Redis 测试指南](https://redis.io/docs/management/testing/) - Redis 测试
+- [Memcached 文档](https://memcached.org/documentation) - Memcached 文档
+- [缓存测试策略](https://aws.amazon.com/caching/best-practices/) - 缓存最佳实践
+
+### 微服务测试
+
+#### 服务发现
+- [Consul 官方文档](https://developer.hashicorp.com/consul/docs) - 服务发现
+- [Nacos 官方文档](https://nacos.io/zh-cn/docs/what-is-nacos.html) - 阿里服务发现
+- [Eureka 文档](https://github.com/Netflix/eureka/wiki) - Netflix 服务发现
+
+#### 配置中心
+- [Apollo 配置中心](https://www.apolloconfig.com/) - 携程配置中心
+- [Spring Cloud Config](https://spring.io/projects/spring-cloud-config) - Spring 配置
+- [Nacos 配置管理](https://nacos.io/zh-cn/docs/quick-start.html) - Nacos 配置
+
+#### 服务网格
+- [Istio 官方文档](https://istio.io/latest/docs/) - 服务网格
+- [Envoy 官方文档](https://www.envoyproxy.io/docs/envoy/latest/) - 高性能代理
+- [Linkerd 文档](https://linkerd.io/2/overview/) - 轻量级服务网格
+
+### 后端编程
+
+#### Python 后端
+- [FastAPI 官方文档](https://fastapi.tiangolo.com/) - 现代化 Python 框架
+- [Django 官方文档](https://docs.djangoproject.com/) - Django 框架
+- [Flask 官方文档](https://flask.palletsprojects.com/) - Flask 微框架
+
+#### Go 后端
+- [Go 官方文档](https://go.dev/doc/) - Go 语言文档
+- [Gin Web Framework](https://gin-gonic.com/docs/) - Gin 框架
+- [Go 测试指南](https://go.dev/doc/tutorial/add-a-test) - Go 测试
+
+#### Java 后端
+- [Spring Boot 文档](https://spring.io/projects/spring-boot) - Spring Boot
+- [Spring Cloud 文档](https://spring.io/projects/spring-cloud) - 微服务框架
+- [JUnit 5 文档](https://junit.org/junit5/docs/current/user-guide/) - Java 测试框架
+
+### 容器与编排
+
+#### Docker
+- [Docker 官方文档](https://docs.docker.com/) - Docker 完整文档
+- [Docker Hub](https://hub.docker.com/) - 镜像仓库
+- [Docker 最佳实践](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) - 最佳实践
+
+#### Kubernetes
+- [Kubernetes 官方文档](https://kubernetes.io/zh-cn/docs/home/) - K8s 完整文档
+- [Kubernetes 权威指南](https://book.douban.com/subject/35458022/) - 中文经典
+- [K8s 测试指南](https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/kubernetes-objects/) - 对象管理
+
+### 安全测试
+
+#### API 安全
+- [OWASP API Security](https://owasp.org/www-project-api-security/) - API 安全 Top 10
+- [API 安全最佳实践](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html) - 安全清单
+- [JWT 安全](https://jwt.io/introduction) - JWT 介绍
+
+#### 认证授权
+- [OAuth 2.0 文档](https://oauth.net/2/) - OAuth 协议
+- [OpenID Connect](https://openid.net/connect/) - 身份认证
+- [Auth0 文档](https://auth0.com/docs) - 认证平台
+
+### 测试数据管理
+
+#### 数据生成
+- [Faker 库](https://faker.readthedocs.io/) - 测试数据生成
+- [Mockaroo](https://www.mockaroo.com/) - 在线数据生成
+- [Factory Boy](https://factoryboy.readthedocs.io/) - Python 工厂模式
+
+#### 数据脱敏
+- [数据脱敏指南](https://www.imperva.com/learn/data-security/data-masking/) - 脱敏概念
+- [GDPR 合规](https://gdpr.eu/) - 数据保护法规
+- [数据隐私](https://www.ibm.com/topics/data-privacy) - 数据隐私保护

@@ -17,5 +17,5 @@ features:
   - title: 全栈技术能力
     details: 涵盖测试框架、视觉融合、稳定性测试、服务端开发、系统架构等完整技术栈。
 
-footer: MIT Licensed | Copyright © 2024-2026 AI测试架构师知识库
+footer: MIT Licensed | Copyright © 2024-2026 AI测试架构知识库
 ---

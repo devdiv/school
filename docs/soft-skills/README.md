@@ -256,3 +256,144 @@ class RootCauseAnalysis:
 
 - [系统架构与测试策略](/architecture/) - 架构视角的测试策略
 - [前沿视野与趋势洞察](/frontier/) - 测试领域前沿技术
+
+## 核心技术学习资源
+
+### 沟通能力
+
+#### 技术沟通
+- [技术写作指南](https://developers.google.com/tech-writing) - Google 技术写作
+- [Write the Docs](https://www.writethedocs.org/) - 文档写作社区
+- [技术演讲技巧](https://speaking.io/) - 技术演讲指南
+- [开发者沟通](https://www.oreilly.com/library/view/developer-to-architect/9781492043805/) - 开发者沟通
+
+#### 缺陷报告
+- [如何写好 Bug 报告](https://www.mozilla.org/en-US/styleguide/communications/writing-style-guide/) - Mozilla 指南
+- [Bug 报告最佳实践](https://www.softwaretestinghelp.com/how-to-write-good-bug-report/) - 测试帮助
+- [Jira 使用指南](https://support.atlassian.com/jira-software-cloud/) - Jira 文档
+
+### 团队协作
+
+#### 敏捷方法
+- [Scrum 指南](https://scrumguides.org/) - Scrum 官方指南
+- [敏捷宣言](https://agilemanifesto.org/) - 敏捷价值观
+- [看板方法](https://kanbanize.com/kanban-resources/getting-started/what-is-kanban) - 看板入门
+- [SAFe 框架](https://scaledagileframework.com/) - 规模化敏捷
+
+#### 团队建设
+- [团队协作五大障碍](https://www.tablegroup.com/books/dysfunctions) - 团队管理经典
+- [Google 团队研究](https://rework.withgoogle.com/guides/understanding-team-effectiveness/) - Google 团队效能
+- [高效团队协作](https://www.atlassian.com/team-playbook) - Atlassian 团队手册
+
+#### 冲突解决
+- [非暴力沟通](https://www.cnvc.org/) - NVC 官方
+- [冲突解决技巧](https://www.mindtools.com/pages/article/newLDR_81.htm) - MindTools
+- [关键对话](https://www.vitalsmarts.com/crucialconversations/) - 关键对话方法
+
+### 问题解决
+
+#### 思维方法
+- [批判性思维](https://www.criticalthinking.org/) - 批判性思维基金会
+- [系统思维](https://thesystemsthinker.com/) - 系统思维资源
+- [第一性原理](https://fs.blog/first-principles/) - Farnam Street
+- [结构化思维](https://www.mckinsey.com/featured-insights/mckinsey-explainers/what-is-mckinsey-frameworks) - 麦肯锡方法
+
+#### 分析方法
+- [5Why 分析法](https://www.mindtools.com/a3mi00v/5-whys) - MindTools
+- [鱼骨图分析](https://asq.org/quality-resources/fishbone) - ASQ 质量工具
+- [根因分析](https://www.thinkreliability.com/) - ThinkReliability
+- [PDCA 循环](https://asq.org/quality-resources/pdca-cycle) - PDCA 方法
+
+#### 决策方法
+- [决策矩阵](https://www.mindtools.com/aybc2wu/decision-matrix-analysis) - 决策工具
+- [SWOT 分析](https://www.mindtools.com/a3wo5qk/swot-analysis) - SWOT 工具
+- [决策树分析](https://www.mindtools.com/a8b5kya/decision-tree-analysis) - 决策树
+
+### 项目管理
+
+#### 项目管理基础
+- [PMP 认证](https://www.pmi.org/certifications/project-management-pmp) - PMI 官方
+- [项目管理知识体系](https://www.pmi.org/pmbok-guide-standards) - PMBOK 指南
+- [项目管理入门](https://www.coursera.org/learn/google-project-management) - Google 项目管理
+
+#### 时间管理
+- [番茄工作法](https://francescocirillo.com/products/the-pomodoro-technique) - 番茄钟
+- [GTD 方法](https://gettingthingsdone.com/) - GTD 官方
+- [时间管理技巧](https://todoist.com/productivity-methods) - Todoist 方法
+
+#### 任务管理
+- [OKR 方法](https://www.whatmatters.com/) - John Doerr OKR
+- [SMART 目标](https://www.mindtools.com/a4wo118/smart-goals) - SMART 原则
+- [任务优先级](https://www.eisenhower.me/eisenhower-matrix/) - 艾森豪威尔矩阵
+
+### 领导力
+
+#### 技术领导力
+- [技术领导者之路](https://www.oreilly.com/library/view/the-managers-path/9781491973899/) - 管理者之路
+- [Staff Engineer](https://staffeng.com/) - Staff Engineer 指南
+- [技术领导力](https://www.oreilly.com/library/view/becoming-a-technical/9781491907668/) - 技术领导
+
+#### 团队管理
+- [高产出管理](https://www.amazon.com/High-Output-Management-Andrew-Grove/dp/0679762884) - 安迪·格鲁夫
+- [赋能](https://www.amazon.com/Team-Teams-Rules-Engagement-Complex/dp/1591847486) - Team of Teams
+- [管理者必读](https://rework.withgoogle.com/guides/managers-identify-what-makes-a-great-manager/) - Google 管理指南
+
+#### 影响力
+- [影响力](https://www.influenceatwork.com/) - Cialdini 影响力
+- [非职权影响力](https://www.oreilly.com/library/view/leading-without-authority/9780593129082/) - 无授权领导
+- [说服的艺术](https://www.influenceatwork.com/7-principles-of-persuasion/) - 说服原则
+
+### 职业发展
+
+#### 职业规划
+- [测试职业发展](https://www.ministryoftesting.com/) - 测试职业社区
+- [技术职业路径](https://www.careercontessa.com/) - 职业发展
+- [职业规划指南](https://www.indeed.com/career-advice) - Indeed 职业建议
+
+#### 学习方法
+- [学习如何学习](https://www.coursera.org/learn/learning-how-to-learn) - Coursera 热门课程
+- [费曼学习法](https://fs.blog/feynman-technique/) - 费曼技巧
+- [刻意练习](https://www.deliberatepractice.com/) - 刻意练习
+
+#### 知识管理
+- [第二大脑](https://www.buildingasecondbrain.com/) - 第二大脑方法
+- [笔记方法](https://zettelkasten.de/) - 卡片盒笔记法
+- [知识管理工具](https://www.notion.so/) - Notion
+
+### 压力管理
+
+#### 心理健康
+- [工作压力管理](https://www.apa.org/topics/healthy-workplaces/workplace-stress) - APA 指南
+- [心理健康资源](https://www.mentalhealth.gov/) - 心理健康官网
+- [冥想入门](https://www.headspace.com/) - Headspace
+
+#### 工作生活平衡
+- [工作生活平衡](https://www.mayoclinic.org/healthy-lifestyle/stress-management/in-depth/work-life-balance/art-20046854) - Mayo Clinic
+- [远程工作技巧](https://www.remote.work/) - 远程工作指南
+- [职业倦怠预防](https://www.helpguide.org/articles/stress/burnout-prevention-and-recovery.htm) - 职业倦怠
+
+### 软技能书籍
+
+#### 经典推荐
+- [《金字塔原理》](https://book.douban.com/subject/1020644/) - 麦肯锡写作
+- [《非暴力沟通》](https://book.douban.com/subject/35207910/) - 沟通经典
+- [《关键对话》](https://book.douban.com/subject/26471579/) - 对话技巧
+- [《影响力》](https://book.douban.com/subject/1786387/) - 影响力
+
+#### 技术人员软技能
+- [《软技能》](https://book.douban.com/subject/26835090/) - 程序员软技能
+- [《程序员修炼之道》](https://book.douban.com/subject/35006892/) - 程序员修养
+- [《代码大全》](https://book.douban.com/subject/1477390/) - 编程之道
+
+### 社区与网络
+
+#### 测试社区
+- [Ministry of Testing](https://www.ministryoftesting.com/) - 测试社区
+- [Test Automation University](https://testautomationu.applitools.com/) - 自动化大学
+- [Software Testing Help](https://www.softwaretestinghelp.com/) - 测试帮助
+
+#### 技术社区
+- [GitHub Community](https://github.com/community) - GitHub 社区
+- [Stack Overflow](https://stackoverflow.com/) - 技术问答
+- [Dev.to](https://dev.to/) - 开发者社区
+- [掘金](https://juejin.cn/) - 中文技术社区

@@ -1290,3 +1290,123 @@ class ModelDeployer:
 
 - [多模态模型(VLM)的UI测试应用](/llm-vlm/vlm/) - UI截图语义理解、非标控件定位
 - [测试脚本自愈体系](/llm-vlm/self-healing/) - 元素定位失效检测、备选定位策略
+
+## 核心技术学习资源
+
+### LLM 核心技术
+
+#### Transformer 架构
+- [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/) - Transformer 可视化详解
+- [Attention Is All You Need 论文](https://arxiv.org/abs/1706.03762) - 原始论文
+- [The Annotated Transformer](https://nlp.seas.harvard.edu/annotated-transformer/) - 带注释的 Transformer 实现
+- [Transformer from Scratch](https://peterbloem.nl/blog/transformers) - 从零实现 Transformer
+
+#### 大模型架构
+- [GPT 系列论文解读](https://jalammar.github.io/illustrated-gpt2/) - GPT 架构详解
+- [LLaMA 论文](https://arxiv.org/abs/2302.13971) - Meta 开源模型
+- [Mistral 论文](https://arxiv.org/abs/2310.06825) - 高效开源模型
+- [Mixture of Experts 详解](https://arxiv.org/abs/2401.04088) - MoE 架构
+
+### VLM 多模态模型
+
+#### 核心模型
+- [CLIP 论文](https://arxiv.org/abs/2103.00020) - 图文对比学习
+- [GPT-4V 技术报告](https://arxiv.org/abs/2309.17421) - GPT-4 视觉能力
+- [LLaVA 论文](https://arxiv.org/abs/2304.08485) - 开源多模态模型
+- [BLIP-2 论文](https://arxiv.org/abs/2301.12597) - 视觉语言预训练
+
+#### 学习资源
+- [多模态学习综述](https://arxiv.org/abs/2303.05058) - 多模态学习最新进展
+- [Vision-Language Models Guide](https://huggingface.co/blog/vision-language-models) - HuggingFace 指南
+- [CLIP 原理详解](https://openai.com/research/clip) - OpenAI CLIP 介绍
+
+### LangChain 开发
+
+#### 官方资源
+- [LangChain 官方文档](https://python.langchain.com/docs/get_started/introduction) - 完整开发文档
+- [LangChain GitHub](https://github.com/langchain-ai/langchain) - 源码仓库
+- [LangChain Cookbook](https://python.langchain.com/docs/cookbook/) - 实战案例
+- [LangSmith 文档](https://docs.smith.langchain.com/) - 调试与监控平台
+
+#### 学习教程
+- [LangChain 入门教程](https://www.bilibili.com/video/BV1EM411K7Vg/) - 中文视频教程
+- [Build with LangChain](https://blog.langchain.dev/) - 官方博客
+- [LangChain Examples](https://github.com/langchain-ai/langchain/tree/master/cookbook) - 代码示例
+
+### LangGraph 工作流
+
+#### 核心文档
+- [LangGraph 官方文档](https://langchain-ai.github.io/langgraph/) - 工作流编排框架
+- [LangGraph Tutorials](https://langchain-ai.github.io/langgraph/tutorials/) - 官方教程
+- [LangGraph Examples](https://github.com/langchain-ai/langgraph/tree/main/examples) - 示例代码
+
+#### Agent 架构
+- [Building LLM Agents](https://lilianweng.github.io/posts/2023-06-23-agent/) - Agent 架构详解
+- [LangGraph Agent 教程](https://langchain-ai.github.io/langgraph/tutorials/introduction/) - Agent 开发入门
+
+### RAG 检索增强生成
+
+#### 技术文档
+- [RAG 最佳实践](https://blog.langchain.dev/deconstructing-rag/) - LangChain 官方指南
+- [Advanced RAG Techniques](https://blog.llamaindex.ai/a-cheat-sheet-and-a-roadmap-for-advanced-rag-techniques-4e0e8b2f9c69) - 高级 RAG 技术
+- [RAG 评估框架](https://docs.ragas.io/en/stable/) - RAGAS 评估工具
+
+#### 向量数据库
+- [Milvus 官方文档](https://milvus.io/docs) - 开源向量数据库
+- [Pinecone 学习中心](https://www.pinecone.io/learn/) - 向量数据库教程
+- [Chroma 文档](https://docs.trychroma.com/) - 轻量级向量数据库
+- [Weaviate 文档](https://weaviate.io/developers/weaviate) - 语义搜索引擎
+
+### Prompt Engineering
+
+#### 系统学习
+- [Prompt Engineering Guide](https://www.promptingguide.ai/) - 最全面的提示词指南
+- [Learn Prompting](https://learnprompting.org/) - 免费课程
+- [OpenAI Prompt Engineering](https://platform.openai.com/docs/guides/prompt-engineering) - 官方最佳实践
+
+#### 高级技术
+- [Chain-of-Thought 论文](https://arxiv.org/abs/2201.11903) - 思维链推理
+- [ReAct 论文](https://arxiv.org/abs/2210.03629) - 推理与行动
+- [Self-Consistency](https://arxiv.org/abs/2203.11171) - 自一致性方法
+- [Tree of Thoughts](https://arxiv.org/abs/2305.10601) - 思维树方法
+
+### 模型微调
+
+#### 微调技术
+- [LoRA 论文](https://arxiv.org/abs/2106.09685) - 低秩适配微调
+- [QLoRA 论文](https://arxiv.org/abs/2305.14314) - 量化 LoRA
+- [PEFT 文档](https://huggingface.co/docs/peft) - 参数高效微调库
+- [Hugging Face 微调教程](https://huggingface.co/docs/transformers/training) - 模型训练指南
+
+#### 实践资源
+- [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl) - 微调工具
+- [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) - 一键微调平台
+- [Unsloth](https://github.com/unslothai/unsloth) - 快速微调工具
+
+### 模型部署
+
+#### 推理框架
+- [vLLM 文档](https://vllm.readthedocs.io/) - 高性能推理引擎
+- [TGI 文档](https://huggingface.co/docs/text-generation-inference) - HuggingFace 推理
+- [TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM) - NVIDIA 推理优化
+- [llama.cpp](https://github.com/ggerganov/llama.cpp) - CPU 推理
+
+#### 部署平台
+- [Hugging Face Inference](https://huggingface.co/inference) - 云端推理
+- [Together AI](https://together.ai/) - 开源模型托管
+- [Anyscale](https://www.anyscale.com/) - Ray 集群部署
+- [Modal](https://modal.com/) - 无服务器部署
+
+### 测试与评估
+
+#### 模型评估
+- [HELM 排行榜](https://crfm.stanford.edu/helm/lite/) - 斯坦福模型评估
+- [Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard) - 开源模型排行
+- [MMLU 基准](https://github.com/hendrycks/test) - 多任务语言理解
+- [HumanEval](https://github.com/openai/human-eval) - 代码生成评估
+
+#### LLM 测试
+- [Promptfoo](https://github.com/promptfoo/promptfoo) - Prompt 测试工具
+- [TruLens](https://www.trulens.org/) - LLM 应用评估
+- [DeepEval](https://github.com/confident-ai/deepeval) - LLM 单元测试
+- [Giskard](https://github.com/Giskard-AI/giskard) - AI 模型测试

@@ -281,6 +281,123 @@ AI不是要完全替代人工，而是增强人的能力：
 - [Agentic QA 自主测试体系](/ai-testing/agentic/) - 测试智能体演进、多智能体协作、探索性测试AI化
 - [测试左移与AI赋能](/ai-testing/shift-left/) - AI辅助需求评审、代码变更影响预测、PR级质量门禁
 
+## 核心技术学习资源
+
+### AI/ML 基础
+
+#### 在线课程
+- [机器学习 - 吴恩达 (Coursera)](https://www.coursera.org/learn/machine-learning) - 经典的机器学习入门课程
+- [深度学习专项课程 - deeplearning.ai](https://www.deeplearning.ai/) - 深度学习系统学习
+- [CS229: Machine Learning - Stanford](http://cs229.stanford.edu/) - 斯坦福大学机器学习课程
+- [Fast.ai Practical Deep Learning](https://course.fast.ai/) - 实践导向的深度学习课程
+
+#### 书籍推荐
+- [《机器学习》- 周志华](https://book.douban.com/subject/26708119/) - 国内经典机器学习教材
+- [《深度学习》- Ian Goodfellow](https://www.deeplearningbook.org/) - 深度学习圣经
+- [《动手学深度学习》- 李沐](https://zh.d2l.ai/) - 理论与实践结合
+
+#### 官方文档
+- [PyTorch 官方文档](https://pytorch.org/docs/stable/index.html) - 深度学习框架
+- [TensorFlow 官方文档](https://www.tensorflow.org/guide) - Google 深度学习框架
+- [Scikit-learn 文档](https://scikit-learn.org/stable/) - 机器学习工具库
+
+### 大语言模型 (LLM)
+
+#### 核心论文
+- [Attention Is All You Need (Transformer)](https://arxiv.org/abs/1706.03762) - Transformer 架构奠基论文
+- [GPT-3 Paper](https://arxiv.org/abs/2005.14165) - GPT-3 技术报告
+- [LLaMA: Open and Efficient Foundation Language Models](https://arxiv.org/abs/2302.13971) - Meta 开源大模型
+- [Constitutional AI](https://arxiv.org/abs/2212.08073) - Anthropic 的 AI 对齐方法
+
+#### 学习资源
+- [Hugging Face NLP Course](https://huggingface.co/learn/nlp-course) - NLP 和 Transformers 系统教程
+- [LangChain 官方文档](https://python.langchain.com/docs/get_started/introduction) - LLM 应用开发框架
+- [OpenAI API 文档](https://platform.openai.com/docs/introduction) - GPT API 使用指南
+- [Anthropic Claude 文档](https://docs.anthropic.com/claude/docs) - Claude API 文档
+
+#### 实践项目
+- [LangChain GitHub](https://github.com/langchain-ai/langchain) - LLM 应用开发框架
+- [LlamaIndex](https://github.com/run-llama/llama_index) - 数据框架
+- [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT) - 自主 AI Agent
+
+### Prompt Engineering
+
+#### 学习指南
+- [Prompt Engineering Guide](https://www.promptingguide.ai/) - 最全面的提示词工程指南
+- [Learn Prompting](https://learnprompting.org/) - 免费提示词工程课程
+- [OpenAI Prompt Engineering Guide](https://platform.openai.com/docs/guides/prompt-engineering) - OpenAI 官方指南
+- [Anthropic Prompt Engineering](https://docs.anthropic.com/claude/docs/prompt-engineering) - Claude 提示词指南
+
+#### 技术框架
+- [ReAct: Synergizing Reasoning and Acting](https://arxiv.org/abs/2210.03629) - 推理与行动结合框架
+- [Chain-of-Thought Prompting](https://arxiv.org/abs/2201.11903) - 思维链提示
+- [Few-Shot Learning](https://arxiv.org/abs/2005.14165) - 少样本学习
+
+### AI Agent 与智能体
+
+#### 核心概念
+- [LangGraph 文档](https://langchain-ai.github.io/langgraph/) - 构建状态化 Agent
+- [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT) - 自主 AI Agent
+- [BabyAGI](https://github.com/yoheinakajima/babyagi) - 任务驱动的自主 Agent
+- [AgentBench](https://github.com/THUDM/AgentBench) - Agent 评估基准
+
+#### 学习资源
+- [Building LLM Agents - Lilian Weng](https://lilianweng.github.io/posts/2023-06-23-agent/) - Agent 架构详解
+- [LangChain Agents Tutorial](https://python.langchain.com/docs/modules/agents/) - Agent 开发教程
+- [OpenAI Function Calling](https://platform.openai.com/docs/guides/function-calling) - 工具调用机制
+
+### RAG (检索增强生成)
+
+#### 技术文档
+- [LangChain RAG Tutorial](https://python.langchain.com/docs/use_cases/question_answering/) - RAG 实战教程
+- [LlamaIndex RAG Guide](https://docs.llamaindex.ai/en/stable/getting_started/concepts/) - RAG 概念与实践
+- [Pinecone RAG Guide](https://www.pinecone.io/learn/retrieval-augmented-generation/) - 向量数据库 RAG
+
+#### 向量数据库
+- [Milvus 文档](https://milvus.io/docs) - 开源向量数据库
+- [Pinecone 文档](https://docs.pinecone.io/) - 云原生向量数据库
+- [Chroma 文档](https://docs.trychroma.com/) - 轻量级向量数据库
+- [Weaviate 文档](https://weaviate.io/developers/weaviate) - 语义搜索引擎
+
+### AI 测试工具
+
+#### 测试框架
+- [Playwright](https://playwright.dev/) - 现代化 Web 测试框架
+- [Selenium](https://www.selenium.dev/documentation/) - Web 自动化标准
+- [Cypress](https://docs.cypress.io/) - 前端测试框架
+- [K6](https://grafana.com/docs/k6/latest/) - 性能测试工具
+
+#### AI 测试平台
+- [Testin XAgent](https://www.testin.cn/) - AI 驱动测试平台
+- [Katalon](https://www.katalon.com/) - AI 测试平台
+- [Mabl](https://www.mabl.com/) - 智能 E2E 测试
+
+### 学术资源
+
+#### 顶会论文
+- [ICSE (软件工程)](https://www.icse-conferences.org/) - 软件工程顶会
+- [FSE (软件工程基础)](https://www.esec-fse.org/) - 软件工程研究
+- [ASE (自动化软件工程)](https://ase-conferences.org/) - 自动化软件工程
+- [ISSTA (软件测试)](https://issta.org/) - 软件测试与分析
+
+#### 论文资源
+- [arXiv cs.SE](https://arxiv.org/list/cs.SE/recent) - 软件工程最新论文
+- [arXiv cs.AI](https://arxiv.org/list/cs.AI/recent) - AI 最新研究
+- [Papers With Code](https://paperswithcode.com/) - 论文与代码实现
+
+### 社区与博客
+
+#### 技术博客
+- [Google Testing Blog](https://testing.googleblog.com/) - Google 测试博客
+- [Microsoft DevBlogs](https://devblogs.microsoft.com/) - 微软开发者博客
+- [OpenAI Blog](https://openai.com/blog) - OpenAI 官方博客
+- [Anthropic Blog](https://www.anthropic.com/research) - Anthropic 研究
+
+#### 社区
+- [Hugging Face 社区](https://huggingface.co/) - AI 模型社区
+- [r/MachineLearning](https://www.reddit.com/r/MachineLearning/) - 机器学习 Reddit
+- [AI 测试社区](https://www.ministryoftesting.com/) - 软件测试社区
+
 ## 参考阅读
 
 - [Google: AI-Powered Testing at Scale](https://testing.googleblog.com/)
