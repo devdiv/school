@@ -4,10 +4,13 @@ title: 首页
 heroImage: /images/hero.png
 actions:
   - text: 开始学习
-    link: /ai-testing/
+    link: /ai-testing-theory/
     type: primary
-  - text: 测试框架
-    link: /frameworks/
+  - text: 技术栈
+    link: /ai-testing-tech/
+    type: secondary
+  - text: 应用场景
+    link: /ai-testing-scenarios/
     type: secondary
 features:
   - title: AI驱动测试

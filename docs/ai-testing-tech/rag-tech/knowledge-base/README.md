@@ -1,706 +1,492 @@
-# 知识库构建指南
+# RAG知识库构建
 
-构建高质量的测试知识库，包括数据处理、知识管理、质量保障等。
+> 知识库是RAG系统的核心资产。高质量的文档处理、分块策略和索引构建直接决定检索效果。
 
-## 📊 知识库架构
+---
 
-```mermaid
-graph TB
-    subgraph 数据源["数据源"]
-        A1[测试用例]
-        A2[缺陷记录]
-        A3[测试文档]
-        A4[需求文档]
-    end
-    
-    subgraph 数据处理["数据处理"]
-        B1[文档解析]
-        B2[文本分块]
-        B3[向量化]
-        B4[元数据提取]
-    end
-    
-    subgraph 知识管理["知识管理"]
-        C1[增量更新]
-        C2[版本控制]
-        C3[知识融合]
-        C4[知识图谱]
-    end
-    
-    subgraph 质量保障["质量保障"]
-        D1[数据清洗]
-        D2[去重处理]
-        D3[质量评估]
-        D4[反馈优化]
-    end
-    
-    A1 --> B1
-    A2 --> B2
-    A3 --> B3
-    A4 --> B4
-    
-    B1 --> C1
-    B2 --> C2
-    B3 --> C3
-    B4 --> C4
-    
-    C1 --> D1
-    C2 --> D2
-    C3 --> D3
-    C4 --> D4
-    
-    style A1 fill:#e1f5ff
-    style A2 fill:#e1f5ff
-    style A3 fill:#e1f5ff
-    style A4 fill:#e1f5ff
+## 1. 文档处理流程
+
+### 1.1 完整处理流水线
+
+```
+原始文档
+    │
+    ▼
+┌─────────────┐
+│ 文档解析     │  ← PDF/Word/HTML/Markdown/Excel
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│ 内容清洗     │  ← 去噪、标准化、格式修复
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│ 分块策略     │  ← 按段落/标题/语义分块
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│ 元数据增强   │  ← 添加标题、来源、时间、分类
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│ 向量嵌入     │  ← 生成文档向量
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│ 索引构建     │  ← 存入向量数据库
+└─────────────┘
 ```
 
-## 🏗️ 核心组件
-
-### 文档处理器
+### 1.2 文档解析器
 
 ```python
-from typing import Dict, List, Optional
-from dataclasses import dataclass
-from abc import ABC, abstractmethod
-
-@dataclass
-class ProcessedDocument:
-    """
-    处理后的文档
-    """
-    doc_id: str
-    chunks: List[str]
-    metadata: Dict
-    embeddings: Optional[List[List[float]]] = None
-
-class DocumentParser(ABC):
-    """
-    文档解析器基类
-    """
-    @abstractmethod
-    def parse(self, file_path: str) -> str:
-        """
-        解析文档
+class DocumentParser:
+    """文档解析器"""
+    
+    def __init__(self):
+        self.parsers = {
+            'pdf': PDFParser(),
+            'docx': DOCXParser(),
+            'html': HTMLParser(),
+            'markdown': MarkdownParser(),
+            'txt': TXTParser(),
+            'excel': ExcelParser(),
+            'pptx': PPTXParser(),
+        }
+    
+    def parse(self, file_path: str) -> Document:
+        """解析文档"""
+        ext = Path(file_path).suffix.lower()
+        parser = self.parsers.get(ext)
         
-        Args:
-            file_path: 文件路径
-            
-        Returns:
-            str: 文档内容
-        """
-        pass
+        if not parser:
+            raise ValueError(f"Unsupported file type: {ext}")
+        
+        return parser.parse(file_path)
+```
 
-class TextChunker:
-    """
-    文本分块器
-    """
+### 1.3 文档解析最佳实践
+
+| 文档类型 | 推荐解析器 | 注意事项 |
+|---------|-----------|---------|
+| **PDF（文本型）** | PyMuPDF/pdfplumber | 保留表格结构 |
+| **PDF（扫描型）** | OCR + LLM解析 | 识别质量影响分块 |
+| **Word** | python-docx | 保留标题层级 |
+| **HTML** | BeautifulSoup | 去除导航/广告 |
+| **Markdown** | 直接解析 | 保留层级结构 |
+| **Excel** | openpyxl | 表格转自然语言 |
+
+---
+
+## 2. 分块策略（Chunking）
+
+### 2.1 分块策略对比
+
+| 策略 | 精度 | 上下文完整性 | 实现复杂度 | 适用场景 |
+|------|------|------------|-----------|---------|
+| **固定大小分块** | 中 | 差 | 低 | 快速原型 |
+| **按字符分块** | 中 | 中 | 低 | 通用场景 |
+| **按段落分块** | 中高 | 好 | 中 | 结构化文档 |
+| **按标题分块** | 高 | 好 | 中高 | 层次化文档 |
+| **语义分块** | 很高 | 很好 | 高 | 高质量要求 |
+| **递归分块** | 高 | 好 | 中 | 通用推荐 |
+
+### 2.2 递归分块实现
+
+```python
+class RecursiveCharacterTextSplitter:
+    """递归字符分块器（推荐）"""
+    
     def __init__(
         self,
-        chunk_size: int = 512,
-        chunk_overlap: int = 50,
-        separator: str = "\n"
+        chunk_size: int = 1000,
+        chunk_overlap: int = 200,
+        separators: List[str] = None,
     ):
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
-        self.separator = separator
+        self.separators = separators or [
+            "\n\n",    # 段落分隔
+            "\n",      # 换行
+            "。", "！", "？",  # 中文标点
+            " ",       # 空格
+            "",        # 字符（最后手段）
+        ]
     
-    def chunk(self, text: str) -> List[str]:
-        """
-        分块文本
+    def split_text(self, text: str) -> List[str]:
+        """递归分块"""
+        chunks = self._recursive_split(text, self.separators)
+        return [chunk for chunk in chunks if len(chunk.strip()) > 0]
+    
+    def _recursive_split(self, text: str, separators: List[str]) -> List[str]:
+        """递归分割"""
+        if not separators:
+            # 最后一层：按字符分割
+            return self._chunk_by_size(text, self.chunk_size, self.chunk_overlap)
         
-        Args:
-            text: 原始文本
-            
-        Returns:
-            list: 文本块列表
-        """
-        paragraphs = text.split(self.separator)
+        separator = separators[0]
+        remaining_separators = separators[1:]
         
+        # 尝试用当前分隔符分割
+        splits = text.split(separator)
+        
+        # 检查是否需要进一步分割
+        needs_split = any(len(s) > self.chunk_size for s in splits)
+        
+        if not needs_split:
+            return self._chunk_by_size(
+                text, self.chunk_size, self.chunk_overlap
+            )
+        
+        # 递归处理需要分割的部分
         chunks = []
-        current_chunk = []
-        current_size = 0
+        for s in splits:
+            if len(s) <= self.chunk_size:
+                chunks.append(s)
+            else:
+                chunks.extend(
+                    self._recursive_split(s, remaining_separators)
+                )
         
-        for para in paragraphs:
-            para_size = len(para.split())
-            
-            if current_size + para_size > self.chunk_size and current_chunk:
-                chunks.append(self.separator.join(current_chunk))
-                
-                overlap_start = max(0, len(current_chunk) - self._get_overlap_paras())
-                current_chunk = current_chunk[overlap_start:]
-                current_size = sum(len(p.split()) for p in current_chunk)
-            
-            current_chunk.append(para)
-            current_size += para_size
-        
-        if current_chunk:
-            chunks.append(self.separator.join(current_chunk))
+        # 处理重叠
+        return self._add_overlap(chunks, self.chunk_overlap)
+    
+    def _chunk_by_size(self, text: str, size: int, 
+                       overlap: int) -> List[str]:
+        """按固定大小分块"""
+        chunks = []
+        start = 0
+        while start < len(text):
+            end = start + size
+            chunks.append(text[start:end])
+            start = end - overlap
         
         return chunks
-    
-    def _get_overlap_paras(self) -> int:
-        """
-        获取重叠段落数
-        
-        Returns:
-            int: 重叠段落数
-        """
-        return max(1, self.chunk_overlap // 50)
+```
 
-class MetadataExtractor:
-    """
-    元数据提取器
-    """
-    def extract(self, text: str, source: str) -> Dict:
-        """
-        提取元数据
-        
-        Args:
-            text: 文本内容
-            source: 来源
-            
-        Returns:
-            dict: 元数据
-        """
+### 2.3 分块参数调优
+
+```
+分块参数推荐值
+
+文档类型          块大小    重叠    说明
+─────────────────────────────────────────
+技术文档          800-1000  150-200  技术细节需要精确匹配
+新闻报道          500-800   100-150  内容相对独立
+学术论文          1000-1500 200-300  长段落需要保留
+代码文档          600-1000  100-200  代码块需要完整
+FAQ/客服          200-500   50-100   简短问答
+法律文档          1000-2000 300-500  条款独立性重要
+```
+
+---
+
+## 3. 元数据增强
+
+### 3.1 元数据策略
+
+```python
+class MetadataEnricher:
+    """元数据增强器"""
+    
+    def enrich(self, chunk: str, source_doc: Document) -> ChunkWithMetadata:
+        """为文档块添加丰富元数据"""
         return {
-            "source": source,
-            "word_count": len(text.split()),
-            "char_count": len(text),
-            "line_count": len(text.split("\n")),
-            "has_code": "```" in text or "def " in text,
-            "has_table": "|" in text and "---" in text
+            # 基础元数据
+            'chunk_id': self._generate_chunk_id(chunk),
+            'source_file': source_doc.file_path,
+            'source_page': source_doc.page_number,
+            'chunk_index': source_doc.chunk_index,
+            
+            # 内容元数据
+            'title': source_doc.title,
+            'heading': self._extract_heading(chunk, source_doc),
+            'section': self._extract_section(chunk, source_doc),
+            
+            # 时间元数据
+            'publish_date': source_doc.publish_date,
+            'update_date': source_doc.update_date,
+            
+            # 分类元数据
+            'category': source_doc.category,
+            'tags': self._extract_tags(chunk),
+            'language': source_doc.language,
+            
+            # 质量元数据
+            'word_count': len(chunk.split()),
+            'character_count': len(chunk),
+            'completeness': self._estimate_completeness(chunk),
+            
+            # 嵌入元数据
+            'embedding_model': 'bge-large-zh',
+            'embedding_version': 'v1',
         }
 ```
 
-### 知识库构建器
+### 3.2 标题层级提取
 
 ```python
-from typing import Dict, List, Optional
-from dataclasses import dataclass
-import hashlib
-
-@dataclass
-class KnowledgeEntry:
-    """
-    知识条目
-    """
-    entry_id: str
-    content: str
-    embedding: List[float]
-    metadata: Dict
-    version: int = 1
-
-class KnowledgeBaseBuilder:
-    """
-    知识库构建器
-    """
-    def __init__(
-        self,
-        vector_store,
-        embedding_model,
-        chunker: TextChunker = None
-    ):
-        self.vector_store = vector_store
-        self.embedding_model = embedding_model
-        self.chunker = chunker or TextChunker()
-        self.metadata_extractor = MetadataExtractor()
+class HeadingExtractor:
+    """标题层级提取器"""
     
-    def add_document(
-        self,
-        content: str,
-        source: str,
-        metadata: Dict = None
-    ) -> List[str]:
+    def extract(self, doc: Document) -> Dict[int, List[Dict]]:
         """
-        添加文档
+        从文档中提取标题层级结构
         
-        Args:
-            content: 文档内容
-            source: 来源
-            metadata: 元数据
-            
-        Returns:
-            list: 条目ID列表
+        返回: {level: [heading_info]}
         """
-        chunks = self.chunker.chunk(content)
+        headings = []
         
-        base_metadata = self.metadata_extractor.extract(content, source)
-        if metadata:
-            base_metadata.update(metadata)
+        for i, line in enumerate(doc.lines):
+            if self._is_heading(line):
+                level = self._get_heading_level(line)
+                headings.append({
+                    'text': line.strip(),
+                    'level': level,
+                    'position': i,
+                    'children': [],
+                })
         
-        entry_ids = []
+        # 构建层级关系
+        self._build_hierarchy(headings)
         
-        for i, chunk in enumerate(chunks):
-            entry_id = self._generate_id(source, i)
-            embedding = self.embedding_model.embed(chunk)
-            
-            entry = KnowledgeEntry(
-                entry_id=entry_id,
-                content=chunk,
-                embedding=embedding,
-                metadata={
-                    **base_metadata,
-                    "chunk_index": i,
-                    "total_chunks": len(chunks)
-                }
+        return {h['level']: h for h in headings}
+```
+
+---
+
+## 4. 向量嵌入策略
+
+### 4.1 分块嵌入策略
+
+```python
+class EmbeddingStrategy:
+    """嵌入策略"""
+    
+    # 策略选择
+    STRATEGIES = {
+        'single': {
+            'description': '对每个块单独嵌入',
+            'pros': ['简单', '粒度细'],
+            'cons': ['丢失上下文', '块间独立'],
+            'recommended_chunk_size': 500,
+        },
+        'parent_child': {
+            'description': '父块嵌入用于检索，子块用于生成',
+            'pros': ['检索准确', '内容完整'],
+            'cons': ['存储开销大'],
+            'parent_chunk_size': 2000,
+            'child_chunk_size': 500,
+        },
+        'hierarchical': {
+            'description': '多层级嵌入，支持不同粒度的检索',
+            'pros': ['灵活性高'],
+            'cons': ['实现复杂'],
+            'levels': ['section', 'paragraph', 'sentence'],
+        },
+    }
+```
+
+### 4.2 Parent-Child 嵌入
+
+```python
+class ParentChildEmbedding:
+    """父-子嵌入策略"""
+    
+    def __init__(self, embedder, chunker):
+        self.embedder = embedder
+        self.chunker = chunker
+    
+    def index_document(self, doc: Document):
+        """
+        构建父-子索引
+        
+        流程:
+        1. 将文档分割为父块（较大）
+        2. 将每个父块分割为子块（较小）
+        3. 只对父块生成嵌入
+        4. 检索时返回匹配的父块内容
+        """
+        # 1. 分割父块
+        parent_chunks = self.chunker.split(
+            doc.text, 
+            chunk_size=2000, 
+            chunk_overlap=200
+        )
+        
+        indexed_chunks = []
+        for parent in parent_chunks:
+            # 2. 分割子块
+            child_chunks = self.chunker.split(
+                parent,
+                chunk_size=500,
+                chunk_overlap=100
             )
             
-            self.vector_store.insert([entry])
-            entry_ids.append(entry_id)
-        
-        return entry_ids
-    
-    def update_document(
-        self,
-        source: str,
-        new_content: str,
-        metadata: Dict = None
-    ) -> List[str]:
-        """
-        更新文档
-        
-        Args:
-            source: 来源
-            new_content: 新内容
-            metadata: 新元数据
+            # 3. 嵌入父块
+            embedding = self.embedder.encode(parent)
             
-        Returns:
-            list: 新条目ID列表
-        """
-        self.delete_document(source)
+            indexed_chunks.append({
+                'parent_id': self._generate_id(parent),
+                'embedding': embedding,
+                'content': parent,
+                'children': [
+                    {
+                        'child_id': self._generate_id(c),
+                        'content': c,
+                    }
+                    for c in child_chunks
+                ],
+            })
         
-        return self.add_document(new_content, source, metadata)
-    
-    def delete_document(self, source: str):
-        """
-        删除文档
-        
-        Args:
-            source: 来源
-        """
-        pass
-    
-    def _generate_id(self, source: str, chunk_index: int) -> str:
-        """
-        生成ID
-        
-        Args:
-            source: 来源
-            chunk_index: 块索引
-            
-        Returns:
-            str: 生成的ID
-        """
-        content = f"{source}_{chunk_index}"
-        return hashlib.md5(content.encode()).hexdigest()
+        return indexed_chunks
 ```
 
-### 知识管理器
+---
+
+## 5. 知识库质量评估
+
+### 5.1 评估维度
+
+| 维度 | 指标 | 评估方法 |
+|------|------|---------|
+| **完整性** | 信息覆盖率 | 人工抽样检查 |
+| **准确性** | 事实正确率 | 交叉验证 |
+| **一致性** | 内容不冲突率 | 冲突检测 |
+| **可读性** | 语言流畅度 | 评估模型打分 |
+| **可检索性** | 检索命中率 | 测试集评估 |
+
+### 5.2 质量检查脚本
 
 ```python
-from typing import Dict, List, Optional
-from datetime import datetime
-
-class KnowledgeManager:
-    """
-    知识管理器
-    """
-    def __init__(self, vector_store):
-        self.vector_store = vector_store
-        self.version_history: Dict[str, List[Dict]] = {}
+class KnowledgeBaseValidator:
+    """知识库验证器"""
     
-    def add_version(
-        self,
-        entry_id: str,
-        content: str,
-        metadata: Dict
-    ):
-        """
-        添加版本
+    def validate(self, chunk: Chunk) -> ValidationResult:
+        """验证单个文档块的质量"""
+        issues = []
         
-        Args:
-            entry_id: 条目ID
-            content: 内容
-            metadata: 元数据
-        """
-        version = {
-            "content": content,
-            "metadata": metadata,
-            "timestamp": datetime.now().isoformat(),
-            "version": len(self.version_history.get(entry_id, [])) + 1
-        }
+        # 1. 内容完整性检查
+        if self._is_incomplete(chunk):
+            issues.append({
+                'type': 'incomplete',
+                'severity': 'high',
+                'message': '文档块内容不完整',
+            })
         
-        if entry_id not in self.version_history:
-            self.version_history[entry_id] = []
+        # 2. 空内容检查
+        if not chunk.text.strip():
+            issues.append({
+                'type': 'empty',
+                'severity': 'critical',
+                'message': '文档块为空',
+            })
         
-        self.version_history[entry_id].append(version)
-    
-    def get_version_history(self, entry_id: str) -> List[Dict]:
-        """
-        获取版本历史
+        # 3. 乱码检查
+        if self._has_garbage_text(chunk):
+            issues.append({
+                'type': 'garbled',
+                'severity': 'high',
+                'message': '包含���码或异常字符',
+            })
         
-        Args:
-            entry_id: 条目ID
-            
-        Returns:
-            list: 版本历史
-        """
-        return self.version_history.get(entry_id, [])
-    
-    def rollback(self, entry_id: str, version: int):
-        """
-        回滚到指定版本
+        # 4. 重复内容检查
+        if self._is_duplicate(chunk):
+            issues.append({
+                'type': 'duplicate',
+                'severity': 'medium',
+                'message': '与已有文档块高度重复',
+            })
         
-        Args:
-            entry_id: 条目ID
-            version: 版本号
-        """
-        history = self.version_history.get(entry_id, [])
-        
-        for v in history:
-            if v["version"] == version:
-                return v
-        
-        return None
-
-class KnowledgeFusion:
-    """
-    知识融合器
-    """
-    def __init__(self, llm_client):
-        self.llm = llm_client
-    
-    def merge_duplicates(
-        self,
-        entries: List[Dict]
-    ) -> Dict:
-        """
-        合并重复条目
-        
-        Args:
-            entries: 条目列表
-            
-        Returns:
-            dict: 合并后的条目
-        """
-        if len(entries) <= 1:
-            return entries[0] if entries else None
-        
-        contents = [e["content"] for e in entries]
-        
-        prompt = f"""
-请合并以下相似的知识条目，保留所有关键信息：
-
-条目列表：
-{chr(10).join([f'{i+1}. {c}' for i, c in enumerate(contents)])}
-
-请返回合并后的内容。
-"""
-        
-        merged_content = self.llm.generate(prompt)
-        
-        merged_metadata = {}
-        for entry in entries:
-            merged_metadata.update(entry.get("metadata", {}))
-        
-        return {
-            "content": merged_content,
-            "metadata": merged_metadata
-        }
-```
-
-### 质量保障
-
-```python
-from typing import Dict, List
-from dataclasses import dataclass
-
-@dataclass
-class QualityReport:
-    """
-    质量报告
-    """
-    total_entries: int
-    duplicate_count: int
-    low_quality_count: int
-    missing_metadata_count: int
-    recommendations: List[str]
-
-class QualityAssurance:
-    """
-    质量保障器
-    """
-    def __init__(self, vector_store, similarity_threshold: float = 0.95):
-        self.vector_store = vector_store
-        self.similarity_threshold = similarity_threshold
-    
-    def assess_quality(self) -> QualityReport:
-        """
-        评估质量
-        
-        Returns:
-            QualityReport: 质量报告
-        """
-        entries = self.vector_store.get_all()
-        
-        duplicate_count = self._count_duplicates(entries)
-        low_quality_count = self._count_low_quality(entries)
-        missing_metadata_count = self._count_missing_metadata(entries)
-        
-        recommendations = self._generate_recommendations(
-            duplicate_count,
-            low_quality_count,
-            missing_metadata_count
+        return ValidationResult(
+            chunk_id=chunk.id,
+            is_valid=len([i for i in issues if i['severity'] in ['critical', 'high']]) == 0,
+            issues=issues,
         )
+```
+
+---
+
+## 6. 知识库更新策略
+
+### 6.1 增量更新
+
+```python
+class IncrementalUpdater:
+    """增量更新器"""
+    
+    def update(self, new_docs: List[Document], 
+               existing_index: VectorIndex) -> UpdateResult:
+        """
+        增量更新知识库
         
-        return QualityReport(
-            total_entries=len(entries),
-            duplicate_count=duplicate_count,
-            low_quality_count=low_quality_count,
-            missing_metadata_count=missing_metadata_count,
-            recommendations=recommendations
+        策略:
+        1. 检测新增/修改/删除的文档
+        2. 处理新文档
+        3. 更新修改的文档
+        4. 删除已移除的文档
+        """
+        changes = self._detect_changes(new_docs, existing_index)
+        
+        # 处理新增
+        for doc in changes['new']:
+            chunks = self._process_document(doc)
+            self._add_to_index(chunks)
+        
+        # 更新修改
+        for doc in changes['modified']:
+            self._replace_in_index(doc)
+        
+        # 删除移除
+        for doc_id in changes['deleted']:
+            self._remove_from_index(doc_id)
+        
+        return UpdateResult(
+            new_count=len(changes['new']),
+            modified_count=len(changes['modified']),
+            deleted_count=len(changes['deleted']),
         )
-    
-    def _count_duplicates(self, entries: List[Dict]) -> int:
-        """
-        统计重复条目
-        
-        Args:
-            entries: 条目列表
-            
-        Returns:
-            int: 重复数量
-        """
-        seen = set()
-        duplicates = 0
-        
-        for entry in entries:
-            content_hash = hashlib.md5(
-                entry["content"].encode()
-            ).hexdigest()
-            
-            if content_hash in seen:
-                duplicates += 1
-            else:
-                seen.add(content_hash)
-        
-        return duplicates
-    
-    def _count_low_quality(self, entries: List[Dict]) -> int:
-        """
-        统计低质量条目
-        
-        Args:
-            entries: 条目列表
-            
-        Returns:
-            int: 低质量数量
-        """
-        low_quality = 0
-        
-        for entry in entries:
-            content = entry["content"]
-            
-            if len(content.split()) < 10:
-                low_quality += 1
-            elif len(content) < 50:
-                low_quality += 1
-        
-        return low_quality
-    
-    def _count_missing_metadata(self, entries: List[Dict]) -> int:
-        """
-        统计缺失元数据的条目
-        
-        Args:
-            entries: 条目列表
-            
-        Returns:
-            int: 缺失数量
-        """
-        required_fields = ["source", "timestamp"]
-        missing = 0
-        
-        for entry in entries:
-            metadata = entry.get("metadata", {})
-            
-            if not all(field in metadata for field in required_fields):
-                missing += 1
-        
-        return missing
-    
-    def _generate_recommendations(
-        self,
-        duplicates: int,
-        low_quality: int,
-        missing_metadata: int
-    ) -> List[str]:
-        """
-        生成改进建议
-        
-        Args:
-            duplicates: 重复数量
-            low_quality: 低质量数量
-            missing_metadata: 缺失元数据数量
-            
-        Returns:
-            list: 建议列表
-        """
-        recommendations = []
-        
-        if duplicates > 0:
-            recommendations.append(f"发现{duplicates}个重复条目，建议进行去重处理")
-        
-        if low_quality > 0:
-            recommendations.append(f"发现{low_quality}个低质量条目，建议进行内容增强")
-        
-        if missing_metadata > 0:
-            recommendations.append(f"发现{missing_metadata}个缺失元数据的条目，建议补充元数据")
-        
-        return recommendations
 ```
 
-## 🎯 应用场景
-
-### 测试用例知识库
+### 6.2 过期内容处理
 
 ```python
-class TestCaseKnowledgeBase:
-    """
-    测试用例知识库
-    """
-    def __init__(self, builder: KnowledgeBaseBuilder):
-        self.builder = builder
+class ExpiryManager:
+    """过期内容管理器"""
     
-    def add_test_case(
-        self,
-        case_id: str,
-        content: str,
-        test_type: str,
-        priority: str
-    ):
-        """
-        添加测试用例
-        
-        Args:
-            case_id: 用例ID
-            content: 内容
-            test_type: 测试类型
-            priority: 优先级
-        """
-        metadata = {
-            "case_id": case_id,
-            "test_type": test_type,
-            "priority": priority,
-            "category": "test_case"
-        }
-        
-        self.builder.add_document(content, case_id, metadata)
+    def __init__(self, expiry_rules: List[ExpiryRule]):
+        self.rules = expiry_rules
     
-    def search_similar_cases(
-        self,
-        query: str,
-        test_type: str = None,
-        top_k: int = 5
-    ) -> List[Dict]:
-        """
-        搜索相似用例
+    def check_expiry(self, chunk: Chunk) -> ExpiryStatus:
+        """检查文档块是否过期"""
+        for rule in self.rules:
+            if rule.applies_to(chunk):
+                if rule.is_expired(chunk):
+                    return ExpiryStatus(
+                        expired=True,
+                        rule=rule,
+                        reason=rule.expiry_reason,
+                    )
         
-        Args:
-            query: 查询文本
-            test_type: 测试类型过滤
-            top_k: 返回数量
-            
-        Returns:
-            list: 相似用例列表
-        """
-        pass
+        return ExpiryStatus(expired=False)
 ```
 
-### 缺陷知识库
+---
 
-```python
-class DefectKnowledgeBase:
-    """
-    缺陷知识库
-    """
-    def __init__(self, builder: KnowledgeBaseBuilder):
-        self.builder = builder
-    
-    def add_defect(
-        self,
-        defect_id: str,
-        description: str,
-        root_cause: str,
-        solution: str
-    ):
-        """
-        添加缺陷记录
-        
-        Args:
-            defect_id: 缺陷ID
-            description: 描述
-            root_cause: 根因
-            solution: 解决方案
-        """
-        content = f"""
-缺陷描述：{description}
-根因分析：{root_cause}
-解决方案：{solution}
-"""
-        
-        metadata = {
-            "defect_id": defect_id,
-            "category": "defect",
-            "has_solution": bool(solution)
-        }
-        
-        self.builder.add_document(content, defect_id, metadata)
-```
+## 7. 最佳实践
 
-## 📈 最佳实践
+1. **分块大小**：根据文档类型和检索策略选择，一般500-1000字符
+2. **重叠设置**：保持10%-30%的重叠以保留上下文
+3. **元数据丰富**：充分利用元数据增强检索精度
+4. **定期维护**：建立知识库更新和清理机制
+5. **质量监控**：持续监控知识库质量指标
+6. **版本管理**：对知识库变更进行版本控制
 
-### 分块策略
+---
 
-| 文档类型 | 掻荐分块大小 | 说明 |
-|---------|------------|------|
-| 测试用例 | 256-512 | 保持用例完整性 |
-| 需求文档 | 512-1024 | 保持段落完整 |
-| 技术文档 | 512 | 平衡上下文和精度 |
-| 缺陷记录 | 256-512 | 包含完整描述 |
-
-### 元数据规范
-
-```python
-STANDARD_METADATA = {
-    "source": "来源标识",
-    "timestamp": "创建时间",
-    "category": "分类",
-    "version": "版本号",
-    "author": "作者",
-    "tags": "标签列表"
-}
-```
-
-## 📚 学习资源
-
-### 官方文档
-
-| 资源 | 描述 | 链接 |
-|-----|------|------|
-| **LlamaIndex Index** | LlamaIndex索引文档 | [docs.llamaindex.ai/en/stable/module_guides/indexing](https://docs.llamaindex.ai/en/stable/module_guides/indexing/) |
-| **LangChain Docstore** | LangChain文档存储 | [python.langchain.com/docs/modules/data_connection](https://python.langchain.com/docs/modules/data_connection/) |
-
-### 开源工具
-
-| 工具 | 描述 | 链接 |
-|-----|------|------|
-| **Unstructured** | 文档解析库 | [github.com/Unstructured-IO/unstructured](https://github.com/Unstructured-IO/unstructured) |
-| **LangChain Document Loaders** | 文档加载器 | [python.langchain.com/docs/modules/data_connection/document_loaders](https://python.langchain.com/docs/modules/data_connection/document_loaders/) |
-
-## 🔗 相关资源
-
-- [向量数据库实践](/ai-testing-tech/rag-tech/vector-database/) - 向量数据库详解
-- [检索策略优化](/ai-testing-tech/rag-tech/retrieval-strategy/) - 检索策略详解
-- [LLM技术](/ai-testing-tech/llm-tech/) - 大语言模型技术
+*最后更新：2025-01-15 | 维护团队：RAG技术组*

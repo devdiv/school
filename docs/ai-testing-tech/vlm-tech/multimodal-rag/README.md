@@ -1,827 +1,638 @@
-# 多模态RAG应用
+# 多模态RAG
 
-图文混合检索增强生成技术，实现跨模态的知识检索和内容生成。
+> 多模态RAG将视觉信息与文本知识结合，支持图像、文档、视频等多源信息的检索和生成。本文档涵盖核心架构、技术和实践方法。
 
-## 📊 技术架构
+---
 
-```mermaid
-graph TB
-    subgraph 输入层["输入层"]
-        A1[文本查询]
-        A2[图像查询]
-        A3[混合查询]
-    end
-    
-    subgraph 编码层["编码层"]
-        B1[文本编码器]
-        B2[图像编码器]
-        B3[多模态编码器]
-    end
-    
-    subgraph 检索层["检索层"]
-        C1[向量数据库]
-        C2[跨模态检索]
-        C3[混合排序]
-    end
-    
-    subgraph 生成层["生成层"]
-        D1[上下文组装]
-        D2[多模态生成]
-        D3[结果优化]
-    end
-    
-    A1 --> B1
-    A2 --> B2
-    A3 --> B3
-    
-    B1 --> C1
-    B2 --> C2
-    B3 --> C3
-    
-    C1 --> D1
-    C2 --> D2
-    C3 --> D3
-    
-    style A1 fill:#e1f5ff
-    style A2 fill:#e1f5ff
-    style A3 fill:#e1f5ff
+## 1. 多模态RAG架构
+
+### 1.1 完整架构
+
+```
+多模态RAG系统
+┌─────────────────────────────────────────────────────────┐
+│                      用户输入层                         │
+│         文本查询 / 图像上传 / 混合输入                    │
+└────────────────────┬────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│                     查询理解层                           │
+│  • 多模态查询解析                                        │
+│  • 意图识别                                             │
+│  • 模态融合判断                                          │
+└────────────────────┬────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│                     多模态检索层                         │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐  │
+│  │ 文本检索  │ │ 图像检索  │ │ 文档检索  │ │ 视频检索  │  │
+│  └──────────┘ └──────────┘ └──────────┘ └──────────┘  │
+│           ↓                    ↓                        │
+│        向量融合 + 重排序                                     │
+└────────────────────┬────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│                     多模态理解层                         │
+│  • 视觉编码器（图像/视频帧）                               │
+│  • 跨模态对齐                                             │
+│  • 上下文融合                                             │
+└────────────────────┬────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│                    多模态生成层                           │
+│  • 视觉-语言模型（VLM）                                   │
+│  • 多模态上下文组装                                       │
+│  • 响应生成（文本+可选图像）                                │
+└─────────────────────────────────────────────────────────┘
 ```
 
-## 🏗️ 核心组件
-
-### 多模态编码器
+### 1.2 多模态检索策略
 
 ```python
-from typing import Dict, List, Optional, Union
-from dataclasses import dataclass
-import base64
-import numpy as np
-
-@dataclass
-class MultimodalEmbedding:
-    """
-    多模态嵌入类
-    """
-    text_embedding: Optional[List[float]] = None
-    image_embedding: Optional[List[float]] = None
-    combined_embedding: Optional[List[float]] = None
-
-class MultimodalEncoder:
-    """
-    多模态编码器
-    将文本和图像编码为统一向量空间
-    """
-    def __init__(self, vlm_client, embedding_dim: int = 768):
-        self.vlm = vlm_client
-        self.embedding_dim = embedding_dim
+class MultimodalRetriever:
+    """多模态检索器"""
     
-    def encode_text(self, text: str) -> List[float]:
-        """
-        编码文本
-        
-        Args:
-            text: 文本内容
-            
-        Returns:
-            list: 文本嵌入向量
-        """
-        return self.vlm.get_text_embedding(text)
+    def __init__(self, text_retriever, image_retriever, 
+                 cross_modal_encoder):
+        self.text_retriever = text_retriever
+        self.image_retriever = image_retriever
+        self.cross_modal_encoder = cross_modal_encoder
     
-    def encode_image(self, image_path: str) -> List[float]:
+    def search(self, query: Union[str, Image], 
+               query_type: str = 'text',
+               top_k: int = 10) -> MultimodalResults:
         """
-        编码图像
+        多模态查询检索
         
-        Args:
-            image_path: 图像路径
-            
-        Returns:
-            list: 图像嵌入向量
+        查询类型:
+        - text: 文本查询 → 检索文本+相关图像
+        - image: 图像查询 → 检索相似图像+相关文本
+        - hybrid: 混合查询
         """
-        with open(image_path, "rb") as f:
-            image_data = base64.b64encode(f.read()).decode()
-        
-        return self.vlm.get_image_embedding(image_data)
-    
-    def encode_multimodal(
-        self,
-        text: str = None,
-        image_path: str = None
-    ) -> MultimodalEmbedding:
-        """
-        编码多模态内容
-        
-        Args:
-            text: 文本内容
-            image_path: 图像路径
-            
-        Returns:
-            MultimodalEmbedding: 多模态嵌入
-        """
-        text_embedding = None
-        image_embedding = None
-        combined_embedding = None
-        
-        if text:
-            text_embedding = self.encode_text(text)
-        
-        if image_path:
-            image_embedding = self.encode_image(image_path)
-        
-        if text_embedding and image_embedding:
-            combined_embedding = self._combine_embeddings(
-                text_embedding,
-                image_embedding
+        if query_type == 'text':
+            # 文本查询：同时检索文本和相关图像
+            text_results = self.text_retriever.search(
+                query, top_k=top_k
             )
-        elif text_embedding:
-            combined_embedding = text_embedding
-        elif image_embedding:
-            combined_embedding = image_embedding
-        
-        return MultimodalEmbedding(
-            text_embedding=text_embedding,
-            image_embedding=image_embedding,
-            combined_embedding=combined_embedding
-        )
-    
-    def _combine_embeddings(
-        self,
-        text_emb: List[float],
-        image_emb: List[float]
-    ) -> List[float]:
-        """
-        组合文本和图像嵌入
-        
-        Args:
-            text_emb: 文本嵌入
-            image_emb: 图像嵌入
+            image_results = self.image_retriever.search_by_text(
+                query, top_k=top_k // 2
+            )
             
-        Returns:
-            list: 组合后的嵌入
-        """
-        text_arr = np.array(text_emb)
-        image_arr = np.array(image_emb)
+        elif query_type == 'image':
+            # 图像查询：检索相似图像和描述
+            image_results = self.image_retriever.search(
+                query, top_k=top_k
+            )
+            text_results = self.text_retriever.search_by_image(
+                query, top_k=top_k
+            )
         
-        combined = (text_arr + image_arr) / 2
+        # 跨模态融合
+        fused_results = self._cross_modal_fusion(
+            text_results, image_results, query
+        )
         
-        norm = np.linalg.norm(combined)
-        if norm > 0:
-            combined = combined / norm
-        
-        return combined.tolist()
+        return fused_results[:top_k]
 ```
 
-### 多模态向量存储
+---
+
+## 2. 视觉编码技术
+
+### 2.1 图像编码模型
+
+| 模型 | 类型 | 维度 | 特点 | 适用场景 |
+|------|------|------|------|---------|
+| **CLIP-ViT-L/14** | 图文对比 | 768 | 通用图文匹配 | 通用多模态 |
+| **SigLIP-So400M** | 图文对比 | 1152 | 大规模训练 | 高精度检索 |
+| **InternVL-2** | 多模态对话 | 4096 | 详细理解 | 复杂图像问答 |
+| **Qwen2-VL** | 视频理解 | 3584 | 视频+图像 | 视频RAG |
+| **BLIP-2** | 问答驱动 | 2048 | 轻量高效 | 实时应用 |
+
+### 2.2 图像编码实现
 
 ```python
-from typing import Dict, List, Any, Optional
-from dataclasses import dataclass
-import json
-
-@dataclass
-class MultimodalDocument:
-    """
-    多模态文档类
-    """
-    doc_id: str
-    text_content: str
-    image_paths: List[str]
-    text_embedding: Optional[List[float]] = None
-    image_embeddings: Optional[List[List[float]]] = None
-    metadata: Dict = None
-
-class MultimodalVectorStore:
-    """
-    多模态向量存储
-    支持图文混合检索
-    """
-    def __init__(self, encoder: MultimodalEncoder):
-        self.encoder = encoder
-        self.documents: Dict[str, MultimodalDocument] = {}
-        self.text_index: List[tuple] = []
-        self.image_index: List[tuple] = []
+class ImageEncoder:
+    """图像编码器"""
     
-    def add_document(self, document: MultimodalDocument):
-        """
-        添加文档
-        
-        Args:
-            document: 多模态文档
-        """
-        text_embedding = self.encoder.encode_text(document.text_content)
-        
-        image_embeddings = []
-        for image_path in document.image_paths:
-            emb = self.encoder.encode_image(image_path)
-            image_embeddings.append(emb)
-        
-        document.text_embedding = text_embedding
-        document.image_embeddings = image_embeddings
-        
-        self.documents[document.doc_id] = document
-        
-        self.text_index.append((document.doc_id, text_embedding))
-        
-        for i, img_emb in enumerate(image_embeddings):
-            self.image_index.append((f"{document.doc_id}_img_{i}", img_emb))
+    def __init__(self, model_name: str = 'clip-vit-large-patch14'):
+        self.processor = AutoProcessor.from_pretrained(model_name)
+        self.model = AutoModel.from_pretrained(model_name)
+        self.model.eval()
     
-    def search_by_text(
-        self,
-        query: str,
-        top_k: int = 5
-    ) -> List[Dict]:
-        """
-        文本检索
+    def encode(self, image: Image) -> np.ndarray:
+        """将图像编码为向量"""
+        inputs = self.processor(images=image, return_tensors='pt')
         
-        Args:
-            query: 查询文本
-            top_k: 返回数量
+        with torch.no_grad():
+            image_features = self.model.get_image_features(
+                **inputs
+            )
+            image_features = image_features / image_features.norm(
+                dim=-1, keepdim=True
+            )
+        
+        return image_features.cpu().numpy()[0]
+    
+    def encode_batch(self, images: List[Image]) -> np.ndarray:
+        """批量编码"""
+        inputs = self.processor(images=images, return_tensors='pt')
+        
+        with torch.no_grad():
+            features = self.model.get_image_features(**inputs)
+            features = features / features.norm(dim=-1, keepdim=True)
+        
+        return features.cpu().numpy()
+```
+
+### 2.3 文档视觉编码
+
+```python
+class DocumentVisualEncoder:
+    """文档视觉编码器 - 处理PDF/扫描文档"""
+    
+    def encode_document(self, document: Document) -> MultimodalChunk:
+        """
+        将文档转换为多模态chunk
+        
+        策略:
+        1. 提取文本内容和页面截图
+        2. 对页���截图进行视觉编码
+        3. 保留文本用于精确检索
+        4. 视觉编码用于相似性检索
+        """
+        chunks = []
+        
+        for page_num, page in enumerate(document.pages):
+            # 提取页面视觉表示
+            page_image = page.render_to_image()
+            visual_embedding = self._encode_image(page_image)
             
-        Returns:
-            list: 检索结果
+            # 提取页面文本
+            text_content = page.extract_text()
+            text_embedding = self._encode_text(text_content)
+            
+            chunks.append(MultimodalChunk(
+                chunk_id=f'{document.id}_page_{page_num}',
+                text=text_content,
+                text_embedding=text_embedding,
+                visual_embedding=visual_embedding,
+                source_page=page_num,
+                source_file=document.file_path,
+            ))
+        
+        return chunks
+```
+
+---
+
+## 3. 跨模态检索
+
+### 3.1 文本到图像检索
+
+```python
+class TextToImageRetrieval:
+    """文本到图像检索"""
+    
+    def __init__(self, clip_encoder):
+        self.encoder = clip_encoder
+    
+    def search(self, query: str, top_k: int = 10) -> List[ImageResult]:
         """
+        基于文本查询检索相关图像
+        
+        原理:
+        - CLIP将文本和图像映射到同一向量空间
+        - 通过向量相似度找到最匹配的图像
+        """
+        # 编码查询文本
         query_embedding = self.encoder.encode_text(query)
         
-        scores = []
-        for doc_id, doc_emb in self.text_index:
-            score = self._cosine_similarity(query_embedding, doc_emb)
-            scores.append((doc_id, score))
-        
-        scores.sort(key=lambda x: x[1], reverse=True)
+        # 在图像向量索引中搜索
+        scores, indices = self.image_index.search(
+            query_embedding, top_k=top_k
+        )
         
         results = []
-        for doc_id, score in scores[:top_k]:
-            doc = self.documents.get(doc_id)
-            if doc:
-                results.append({
-                    "doc_id": doc_id,
-                    "score": score,
-                    "text_content": doc.text_content,
-                    "image_paths": doc.image_paths,
-                    "metadata": doc.metadata
-                })
+        for score, idx in zip(scores, indices):
+            image_meta = self.image_index.get_metadata(idx)
+            results.append(ImageResult(
+                image_id=image_meta['id'],
+                image_path=image_meta['path'],
+                caption=image_meta.get('caption', ''),
+                similarity_score=float(score),
+                related_text=self._get_related_text(idx, query),
+            ))
         
         return results
     
-    def search_by_image(
-        self,
-        image_path: str,
-        top_k: int = 5
-    ) -> List[Dict]:
-        """
-        图像检索
+    def _get_related_text(self, image_idx: int, 
+                          query: str) -> str:
+        """获取与图像最相关的文本片段"""
+        # 使用CLIP计算图像与知识库文本的相关性
+        text_embeddings = self.text_index.get_all_embeddings()
+        similarities = text_embeddings @ self.encoder.encode_image_idx(
+            image_idx
+        )
         
-        Args:
-            image_path: 查询图像路径
-            top_k: 返回数量
-            
-        Returns:
-            list: 检索结果
-        """
-        query_embedding = self.encoder.encode_image(image_path)
-        
-        scores = []
-        for idx, img_emb in self.image_index:
-            score = self._cosine_similarity(query_embedding, img_emb)
-            doc_id = idx.rsplit("_img_", 1)[0]
-            scores.append((doc_id, score))
-        
-        scores.sort(key=lambda x: x[1], reverse=True)
-        
-        seen_docs = set()
-        results = []
-        for doc_id, score in scores:
-            if doc_id in seen_docs:
-                continue
-            seen_docs.add(doc_id)
-            
-            doc = self.documents.get(doc_id)
-            if doc:
-                results.append({
-                    "doc_id": doc_id,
-                    "score": score,
-                    "text_content": doc.text_content,
-                    "image_paths": doc.image_paths,
-                    "metadata": doc.metadata
-                })
-            
-            if len(results) >= top_k:
-                break
-        
-        return results
-    
-    def hybrid_search(
-        self,
-        text_query: str = None,
-        image_query: str = None,
-        text_weight: float = 0.5,
-        top_k: int = 5
-    ) -> List[Dict]:
-        """
-        混合检索
-        
-        Args:
-            text_query: 文本查询
-            image_query: 图像查询路径
-            text_weight: 文本权重
-            top_k: 返回数量
-            
-        Returns:
-            list: 检索结果
-        """
-        text_results = {}
-        image_results = {}
-        
-        if text_query:
-            for result in self.search_by_text(text_query, top_k * 2):
-                text_results[result["doc_id"]] = result["score"]
-        
-        if image_query:
-            for result in self.search_by_image(image_query, top_k * 2):
-                image_results[result["doc_id"]] = result["score"]
-        
-        all_doc_ids = set(text_results.keys()) | set(image_results.keys())
-        
-        combined_scores = []
-        for doc_id in all_doc_ids:
-            text_score = text_results.get(doc_id, 0)
-            image_score = image_results.get(doc_id, 0)
-            
-            combined = text_weight * text_score + (1 - text_weight) * image_score
-            combined_scores.append((doc_id, combined))
-        
-        combined_scores.sort(key=lambda x: x[1], reverse=True)
-        
-        results = []
-        for doc_id, score in combined_scores[:top_k]:
-            doc = self.documents.get(doc_id)
-            if doc:
-                results.append({
-                    "doc_id": doc_id,
-                    "score": score,
-                    "text_content": doc.text_content,
-                    "image_paths": doc.image_paths,
-                    "metadata": doc.metadata
-                })
-        
-        return results
-    
-    def _cosine_similarity(
-        self,
-        vec1: List[float],
-        vec2: List[float]
-    ) -> float:
-        """
-        计算余弦相似度
-        
-        Args:
-            vec1: 向量1
-            vec2: 向量2
-            
-        Returns:
-            float: 相似度
-        """
-        arr1 = np.array(vec1)
-        arr2 = np.array(vec2)
-        
-        dot = np.dot(arr1, arr2)
-        norm1 = np.linalg.norm(arr1)
-        norm2 = np.linalg.norm(arr2)
-        
-        if norm1 == 0 or norm2 == 0:
-            return 0.0
-        
-        return dot / (norm1 * norm2)
+        # 返回最相关的文本
+        top_text_idx = np.argmax(similarities)
+        return self.text_index.get_text(top_text_idx)
 ```
 
-### 多模态RAG系统
+### 3.2 图像到文本检索
 
 ```python
-from typing import Dict, List, Any, Optional
-from dataclasses import dataclass
-
-@dataclass
-class RAGResponse:
-    """
-    RAG响应类
-    """
-    answer: str
-    sources: List[Dict]
-    confidence: float
-    retrieved_images: List[str]
-
-class MultimodalRAGSystem:
-    """
-    多模态RAG系统
-    实现图文混合检索增强生成
-    """
-    def __init__(
-        self,
-        vlm_client,
-        encoder: MultimodalEncoder,
-        vector_store: MultimodalVectorStore
-    ):
-        self.vlm = vlm_client
-        self.encoder = encoder
-        self.vector_store = vector_store
+class ImageToTextRetrieval:
+    """图像到文本检索"""
     
-    def query(
-        self,
-        text_query: str = None,
-        image_query: str = None,
-        top_k: int = 5
-    ) -> RAGResponse:
+    def search(self, image: Image, 
+               top_k: int = 10) -> List[TextResult]:
         """
-        执行查询
+        基于图像查询检索相关文本
         
-        Args:
-            text_query: 文本查询
-            image_query: 图像查询路径
-            top_k: 检索数量
-            
-        Returns:
-            RAGResponse: 响应结果
+        场景:
+        - 上传截图找文档
+        - 产品图片找规格说明
+        - 图表找原始数据
         """
-        if text_query and image_query:
-            results = self.vector_store.hybrid_search(
-                text_query=text_query,
-                image_query=image_query,
-                top_k=top_k
-            )
-        elif text_query:
-            results = self.vector_store.search_by_text(text_query, top_k)
-        elif image_query:
-            results = self.vector_store.search_by_image(image_query, top_k)
-        else:
-            return RAGResponse(
-                answer="请提供文本或图像查询",
-                sources=[],
-                confidence=0.0,
-                retrieved_images=[]
-            )
+        # 编码图像
+        image_embedding = self.encoder.encode_image(image)
         
-        context = self._build_context(results)
-        
-        answer = self._generate_answer(
-            query=text_query or "请描述这个图像",
-            context=context,
-            image_query=image_query
+        # 跨模态检索
+        scores, indices = self.text_index.search(
+            image_embedding, top_k=top_k
         )
-        
-        retrieved_images = []
-        for result in results:
-            retrieved_images.extend(result.get("image_paths", []))
-        
-        confidence = sum(r["score"] for r in results) / len(results) if results else 0
-        
-        return RAGResponse(
-            answer=answer,
-            sources=results,
-            confidence=confidence,
-            retrieved_images=retrieved_images[:5]
-        )
-    
-    def _build_context(self, results: List[Dict]) -> str:
-        """
-        构建上下文
-        
-        Args:
-            results: 检索结果
-            
-        Returns:
-            str: 上下文字符串
-        """
-        context_parts = []
-        
-        for i, result in enumerate(results, 1):
-            context_parts.append(f"[文档{i}]\n{result['text_content']}")
-        
-        return "\n\n".join(context_parts)
-    
-    def _generate_answer(
-        self,
-        query: str,
-        context: str,
-        image_query: str = None
-    ) -> str:
-        """
-        生成答案
-        
-        Args:
-            query: 查询
-            context: 上下文
-            image_query: 图像查询路径
-            
-        Returns:
-            str: 生成的答案
-        """
-        prompt = f"""
-基于以下上下文回答问题：
-
-上下文：
-{context}
-
-问题：{query}
-
-请提供详细、准确的回答。
-"""
-        
-        if image_query:
-            with open(image_query, "rb") as f:
-                image_data = base64.b64encode(f.read()).decode()
-            
-            return self.vlm.analyze_image(image_data, prompt).get("answer", "")
-        else:
-            return self.vlm.generate(prompt)
-    
-    def add_knowledge(
-        self,
-        doc_id: str,
-        text_content: str,
-        image_paths: List[str] = None,
-        metadata: Dict = None
-    ):
-        """
-        添加知识
-        
-        Args:
-            doc_id: 文档ID
-            text_content: 文本内容
-            image_paths: 图像路径列表
-            metadata: 元数据
-        """
-        document = MultimodalDocument(
-            doc_id=doc_id,
-            text_content=text_content,
-            image_paths=image_paths or [],
-            metadata=metadata or {}
-        )
-        
-        self.vector_store.add_document(document)
-```
-
-## 🎯 应用场景
-
-### 测试知识库问答
-
-构建测试知识库，支持图文混合查询。
-
-```python
-class TestKnowledgeQA:
-    """
-    测试知识库问答系统
-    """
-    def __init__(self, vlm_client):
-        self.encoder = MultimodalEncoder(vlm_client)
-        self.vector_store = MultimodalVectorStore(self.encoder)
-        self.rag = MultimodalRAGSystem(vlm_client, self.encoder, self.vector_store)
-    
-    def add_test_documentation(
-        self,
-        doc_id: str,
-        title: str,
-        content: str,
-        screenshots: List[str] = None
-    ):
-        """
-        添加测试文档
-        
-        Args:
-            doc_id: 文档ID
-            title: 标题
-            content: 内容
-            screenshots: 截图列表
-        """
-        self.rag.add_knowledge(
-            doc_id=doc_id,
-            text_content=f"{title}\n\n{content}",
-            image_paths=screenshots,
-            metadata={"title": title, "type": "documentation"}
-        )
-    
-    def ask(
-        self,
-        question: str,
-        screenshot: str = None
-    ) -> Dict:
-        """
-        提问
-        
-        Args:
-            question: 问题
-            screenshot: 相关截图
-            
-        Returns:
-            dict: 回答结果
-        """
-        response = self.rag.query(
-            text_query=question,
-            image_query=screenshot
-        )
-        
-        return {
-            "answer": response.answer,
-            "sources": [
-                {
-                    "doc_id": s["doc_id"],
-                    "title": s["metadata"].get("title", ""),
-                    "score": s["score"]
-                }
-                for s in response.sources
-            ],
-            "confidence": response.confidence
-        }
-```
-
-### 视觉缺陷检索
-
-根据缺陷描述或截图检索相似问题。
-
-```python
-class VisualDefectRetriever:
-    """
-    视觉缺陷检索器
-    """
-    def __init__(self, vlm_client):
-        self.encoder = MultimodalEncoder(vlm_client)
-        self.vector_store = MultimodalVectorStore(self.encoder)
-    
-    def add_defect(
-        self,
-        defect_id: str,
-        description: str,
-        screenshot: str,
-        resolution: str = None
-    ):
-        """
-        添加缺陷记录
-        
-        Args:
-            defect_id: 缺陷ID
-            description: 描述
-            screenshot: 截图路径
-            resolution: 解决方案
-        """
-        self.vector_store.add_document(MultimodalDocument(
-            doc_id=defect_id,
-            text_content=f"{description}\n\n解决方案：{resolution or '待解决'}",
-            image_paths=[screenshot],
-            metadata={
-                "type": "defect",
-                "description": description,
-                "resolution": resolution
-            }
-        ))
-    
-    def find_similar(
-        self,
-        description: str = None,
-        screenshot: str = None,
-        top_k: int = 5
-    ) -> List[Dict]:
-        """
-        查找相似缺陷
-        
-        Args:
-            description: 描述
-            screenshot: 截图路径
-            top_k: 返回数量
-            
-        Returns:
-            list: 相似缺陷列表
-        """
-        if description and screenshot:
-            results = self.vector_store.hybrid_search(
-                text_query=description,
-                image_query=screenshot,
-                top_k=top_k
-            )
-        elif description:
-            results = self.vector_store.search_by_text(description, top_k)
-        elif screenshot:
-            results = self.vector_store.search_by_image(screenshot, top_k)
-        else:
-            return []
         
         return [
-            {
-                "defect_id": r["doc_id"],
-                "description": r["metadata"].get("description", ""),
-                "resolution": r["metadata"].get("resolution"),
-                "similarity": r["score"],
-                "screenshot": r["image_paths"][0] if r["image_paths"] else None
-            }
-            for r in results
+            TextResult(
+                doc_id=self.text_index.get_doc_id(idx),
+                content=self.text_index.get_content(idx),
+                similarity_score=float(score),
+            )
+            for score, idx in zip(scores, indices)
         ]
 ```
 
-### 测试报告生成
+---
 
-基于历史数据生成测试报告。
+## 4. 多模态上下文融合
+
+### 4.1 上下文组装策略
 
 ```python
-class TestReportGenerator:
-    """
-    测试报告生成器
-    使用多模态RAG生成报告
-    """
-    def __init__(self, vlm_client):
-        self.encoder = MultimodalEncoder(vlm_client)
-        self.vector_store = MultimodalVectorStore(self.encoder)
-        self.vlm = vlm_client
+class MultimodalContextComposer:
+    """多模态上下文组装器"""
     
-    def add_historical_report(
-        self,
-        report_id: str,
-        summary: str,
-        details: str,
-        charts: List[str] = None
-    ):
+    def compose(self, query: str, 
+                results: List[MultimodalResult],
+                max_tokens: int = 8000) -> ContextBlock:
         """
-        添加历史报告
+        将多模态检索结果组装为LLM可理解的上下文
         
-        Args:
-            report_id: 报告ID
-            summary: 摘要
-            details: 详情
-            charts: 图表列表
+        策略:
+        1. 文本结果直接放入上下文
+        2. 图像结果转换为描述文本
+        3. 关键图像保留为视觉输入
+        4. 按相关性排序组装
         """
-        self.vector_store.add_document(MultimodalDocument(
-            doc_id=report_id,
-            text_content=f"摘要：{summary}\n\n详情：{details}",
-            image_paths=charts or [],
-            metadata={"type": "report", "summary": summary}
-        ))
+        # 1. 排序和筛选
+        ranked = self._rank_results(results)
+        selected = self._select_top(ranked, max_tokens)
+        
+        # 2. 转换为统一格式
+        context_parts = []
+        visual_inputs = []
+        
+        for result in selected:
+            if result.type == 'text':
+                context_parts.append({
+                    'type': 'text',
+                    'content': result.content,
+                    'source': result.source,
+                    'relevance': result.score,
+                })
+            elif result.type == 'image':
+                # 图像转换为描述
+                description = self._describe_image(result.image)
+                context_parts.append({
+                    'type': 'image_description',
+                    'content': description,
+                    'source': result.source,
+                    'relevance': result.score,
+                })
+                # 保留关键图像作为视觉输入
+                if result.score > 0.8:
+                    visual_inputs.append(result.image)
+        
+        return ContextBlock(
+            text_context=self._merge_context(context_parts),
+            visual_inputs=visual_inputs[:3],  # 最多3张图像
+            query=query,
+        )
     
-    def generate_report(
-        self,
-        test_results: Dict,
-        style: str = "standard"
-    ) -> str:
-        """
-        生成报告
-        
-        Args:
-            test_results: 测试结果
-            style: 报告风格
-            
-        Returns:
-            str: 生成的报告
-        """
-        query = f"""
-根据以下测试结果生成{style}风格的测试报告：
-- 总用例数：{test_results.get('total', 0)}
-- 通过数：{test_results.get('passed', 0)}
-- 失败数：{test_results.get('failed', 0)}
-"""
-        
-        similar_reports = self.vector_store.search_by_text(query, 3)
-        
-        context = "\n\n".join([
-            r["text_content"] for r in similar_reports
-        ])
-        
+    def _describe_image(self, image: Image) -> str:
+        """将图像转换为文本描述"""
         prompt = f"""
-参考历史报告风格：
-{context}
-
-生成新的测试报告：
-{query}
-
-请包含执行摘要、测试统计、失败分析和改进建议。
-"""
+        请详细描述以下图像的内容：
         
-        return self.vlm.generate(prompt)
+        [图像]
+        
+        包括：场景、对象、文字、关系、上下文
+        """
+        return self.vlm.generate(prompt, image=image)
 ```
 
-## 📚 学习资源
+### 4.2 跨模态重排序
 
-### 官方文档
+```python
+class CrossModalReranker:
+    """跨模态重排序器"""
+    
+    def rerank(self, query: str, 
+               results: List[MultimodalResult]) -> List[MultimodalResult]:
+        """
+        使用跨模态Cross-Encoder对混合结果重新排序
+        
+        优势:
+        - 直接建模查询与每个结果的交互
+        - 统一处理文本和图像
+        - 更高的排序质量
+        """
+        scored = []
+        
+        for result in results:
+            if result.type == 'text':
+                # 文本查询-文本结果对
+                score = self.model.predict_score(query, result.content)
+            else:
+                # 文本查询-图像结果对
+                score = self.model.predict_image_score(
+                    query, result.image
+                )
+            
+            result.re_rank_score = score
+            scored.append(result)
+        
+        # 按重排序分数排序
+        scored.sort(key=lambda x: x.re_rank_score, reverse=True)
+        return scored
+```
 
-| 资源 | 描述 | 链接 |
-|-----|------|------|
-| **CLIP Paper** | 图文对比学习原论文 | [arxiv.org/abs/2103.00020](https://arxiv.org/abs/2103.00020) |
-| **BLIP-2** | 视觉语言预训练 | [github.com/salesforce/LAVIS](https://github.com/salesforce/LAVIS) |
-| **Faiss** | 向量检索库 | [github.com/facebookresearch/faiss](https://github.com/facebookresearch/faiss) |
+---
 
-### 经典论文
+## 5. 多模态生成
 
-| 论文 | 描述 | 链接 |
-|-----|------|------|
-| **CLIP** | 图文对比学习 | [arxiv.org/abs/2103.00020](https://arxiv.org/abs/2103.00020) |
-| **BLIP** | 视觉语言预训练 | [arxiv.org/abs/2201.12086](https://arxiv.org/abs/2201.12086) |
-| **Flamingo** | 少样本多模态模型 | [arxiv.org/abs/2204.14198](https://arxiv.org/abs/2204.14198) |
+### 5.1 VLM生成架构
 
-### 开源工具
+```python
+class MultimodalGenerator:
+    """多模态生成器"""
+    
+    def generate(self, query: str, 
+                 context: ContextBlock,
+                 include_images: bool = True) -> Response:
+        """
+        基于多模态上下文生成响应
+        
+        输入:
+        - query: 用户查询
+        - context: 多模态上下文（文本+图像）
+        """
+        # 构建多模态prompt
+        prompt = self._build_multimodal_prompt(
+            query, context, include_images
+        )
+        
+        # 调用VLM生成
+        response = self.vlm.generate(
+            prompt=prompt,
+            images=context.visual_inputs,
+            max_tokens=1024,
+        )
+        
+        return Response(
+            text=response,
+            images=self._extract_images(response, context),
+            sources=self._extract_sources(context),
+        )
+    
+    def _build_multimodal_prompt(self, query: str,
+                                  context: ContextBlock,
+                                  include_images: bool) -> str:
+        """构建多模态prompt"""
+        prompt = f"""基于以下上下文回答用户问题：
 
-| 工具 | 描述 | 链接 |
-|-----|------|------|
-| **LlamaIndex** | 多模态RAG框架 | [github.com/run-llama/llama_index](https://github.com/run-llama/llama_index) |
-| **Chroma** | 向量数据库 | [github.com/chroma-core/chroma](https://github.com/chroma-core/chroma) |
-| **Pinecone** | 云向量数据库 | [pinecone.io](https://www.pinecone.io/) |
+## 上下文信息
 
-## 🔗 相关资源
+"""
+        for part in context.text_context:
+            if part['type'] == 'text':
+                prompt += f"【文档】{part['content']}\n\n"
+            elif part['type'] == 'image_description':
+                prompt += f"【图片描述】{part['content']}\n\n"
+        
+        if include_images and context.visual_inputs:
+            prompt += "\n## 参考图片\n"
+        
+        prompt += f"""
+## 问题
 
-- [图像理解技术](/ai-testing-tech/vlm-tech/image-understanding/) - 图像理解技术
-- [视觉测试实践](/ai-testing-tech/vlm-tech/visual-testing/) - 视觉测试详解
-- [LLM技术](/ai-testing-tech/llm-tech/) - 大语言模型技术
-- [RAG技术](/ai-testing-tech/rag-tech/) - 检索增强生成
+{query}
+
+## 回答要求
+
+- 基于以上上下文回答
+- 引用信息来源
+- 如果上下文不足，请明确说明
+"""
+        return prompt
+```
+
+### 5.2 多模态问答示例
+
+```python
+class MultimodalQA:
+    """多模态问答引擎"""
+    
+    def answer(self, query: str, 
+               image: Image = None) -> AnswerResult:
+        """
+        多模态问答
+        
+        支持:
+        1. 纯文本问答（带图像检索增强）
+        2. 图像+文本问答
+        3. 复杂图表分析
+        """
+        # 步骤1: 查询理解
+        query_info = self._analyze_query(query, image)
+        
+        # 步骤2: 多模态检索
+        retrieval_results = self.retriever.search(
+            query=query if image else query,
+            image=image if query_info.needs_image else None,
+            top_k=query_info.top_k,
+        )
+        
+        # 步骤3: 上下文组装
+        context = self.composer.compose(
+            query=query,
+            results=retrieval_results,
+        )
+        
+        # 步骤4: 生成回答
+        response = self.generator.generate(
+            query=query,
+            context=context,
+        )
+        
+        return AnswerResult(
+            answer=response.text,
+            images=response.images,
+            sources=response.sources,
+            confidence=response.confidence,
+        )
+```
+
+---
+
+## 6. 视频RAG
+
+### 6.1 视频内容结构化
+
+```python
+class VideoContentExtractor:
+    """视频内容提取器"""
+    
+    def extract(self, video_path: str) -> VideoKnowledgeBase:
+        """
+        从视频提取结构化知识
+        
+        流程:
+        1. 关键帧提取
+        2. 画面描述生成
+        3. 音频转文字（ASR）
+        4. 时间戳对齐
+        """
+        # 1. 提取关键帧
+        frames = self._extract_keyframes(video_path)
+        
+        # 2. 生成画面描述
+        frame_descriptions = []
+        for timestamp, frame in frames:
+            description = self.vlm.describe(frame)
+            frame_descriptions.append({
+                'timestamp': timestamp,
+                'frame': frame,
+                'description': description,
+                'embedding': self.encoder.encode(frame),
+            })
+        
+        # 3. ASR转录
+        transcript = self.asr.transcribe(video_path)
+        
+        # 4. 构建知识库
+        return VideoKnowledgeBase(
+            video_id=self._generate_id(video_path),
+            duration=self._get_duration(video_path),
+            frames=frame_descriptions,
+            transcript=transcript,
+            segments=self._segment_video(
+                frames, transcript
+            ),
+        )
+```
+
+---
+
+## 7. 多模态评估
+
+### 7.1 评估指标
+
+| 维度 | 指标 | 说明 |
+|------|------|------|
+| **检索精度** | Recall@K | 多模态检索召回率 |
+| **排序质量** | NDCG@K | 混合排序质量 |
+| **图像描述** | BLEU-4, CIDEr | 自动生成描述质量 |
+| **图文匹配** | Recall@1 (ITM/MTM) | 图像-文本匹配 |
+| **问答质量** | Exact Match, F1 | 多模态QA准确性 |
+| **用户满意度** | CSAT | 最终用户体验 |
+
+### 7.2 自动化评估
+
+```python
+class MultimodalEvaluator:
+    """多模态评估器"""
+    
+    def evaluate_qa(self, test_set: List[TestSample]) -> Dict:
+        """
+        多模态QA评估
+        """
+        metrics = {
+            'exact_match': [],
+            'f1_score': [],
+            'multimodal_correct': [],
+            'image_usage_rate': [],
+            'latency': [],
+        }
+        
+        for sample in test_set:
+            start = time.time()
+            
+            # 执行多模态QA
+            result = self.engine.answer(
+                query=sample.query,
+                image=sample.query_image,
+            )
+            
+            latency = time.time() - start
+            
+            # 评估答案准确性
+            em = self._compute_em(result.answer, sample.answer)
+            f1 = self._compute_f1(result.answer, sample.answer)
+            
+            metrics['exact_match'].append(em)
+            metrics['f1_score'].append(f1)
+            metrics['latency'].append(latency * 1000)
+            metrics['image_usage_rate'].append(
+                1 if result.images else 0
+            )
+        
+        return {k: {
+            'mean': np.mean(v),
+            'std': np.std(v),
+        } for k, v in metrics.items()}
+```
+
+---
+
+## 8. 工具与框架
+
+| 工具 | 功能 | 说明 |
+|------|------|------|
+| **LlamaIndex** | 多模态RAG框架 | 内置多模态支持 |
+| **LangChain** | 多模态链 | 图像+文本处理 |
+| **Milvus** | 多模态向量库 | 支持多模态索引 |
+| **Weaviate** | 多模态搜索 | CLIP集成 |
+| **OpenCLIP** | 图像编码 | 开放CLIP实现 |
+| **InternVL** | 多模态对话 | 开源VLM |
+| **Qwen2-VL** | 视觉理解 | 阿里开源 |
+
+---
+
+## 9. 最佳实践
+
+1. **选择合适的编码器**：根据任务选择CLIP/SigLIP/InternVL等
+2. **跨模态融合**：在检索阶段和生成阶段都进行融合
+3. **上下文管理**：多模态上下文更占token，需要智能压缩
+4. **增量更新**：建立多模态内容的增量更新机制
+5. **评估体系**：同时评估检索精度和生成质量
+
+---
+
+*最后更新：2025-01-15 | 维护团队：多模态技术组*

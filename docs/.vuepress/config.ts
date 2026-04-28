@@ -61,28 +61,35 @@ export default {
         { text: '合规审计', link: '/ai-testing-quality/compliance/' }
       ]},
       { text: 'AI深度探索', children: [
-        { text: '视觉融合', link: '/ai-deep-seek/vision-physical/' },
-        { text: '稳定性测试', link: '/ai-deep-seek/stability/' },
-        { text: '服务端技术', link: '/ai-deep-seek/server-platform/' },
-        { text: '系统架构', link: '/ai-deep-seek/architecture/' }
+        { text: '视觉融合', link: '/ai-deep-seek/07-vision-physical/' },
+        { text: '稳定性测试', link: '/ai-deep-seek/06-stability/' },
+        { text: '服务端技术', link: '/ai-deep-seek/05-server-platform/' },
+        { text: '系统架构', link: '/ai-deep-seek/03-architecture/' }
       ]},
       { text: '其他', children: [
         { text: '前沿探索', link: '/others/frontier/' },
         { text: '软技能', link: '/others/soft-skills/' }
       ]}
     ],
+    layouts: {
+      Layout: '@/layouts/Layout.vue'
+    },
     sidebar: {
-      '/ai-testing-theory/': [{ text: '', collapsable: false, children: ['', 'methodology/', 'evaluation-system/', 'comparison/', 'best-practices/'] }],
-      '/ai-testing-tech/': [{ text: '', collapsable: false, children: ['', 'llm-tech/', 'vlm-tech/', 'agent-tech/', 'rag-tech/', 'model-evaluation/'] }],
-      '/ai-testing-scenarios/': [{ text: '', collapsable: false, children: ['', 'ui-testing/', 'api-testing/', 'performance-testing/', 'security-testing/', 'mobile-testing/'] }],
-      '/ai-testing-engineering/': [{ text: '', collapsable: false, children: ['', 'data-engineering/', 'mlops/', 'platform/', 'devops/'] }],
-      '/ai-testing-quality/': [{ text: '', collapsable: false, children: ['', 'quality-evaluation/', 'effectiveness-metrics/', 'risk-control/', 'compliance/'] }],
-      '/ai-deep-seek/vision-physical/': [{ text: '', collapsable: false, children: ['', 'cv/', 'detection/', 'robotic/'] }],
-      '/ai-deep-seek/stability/': [{ text: '', collapsable: false, children: ['', 'performance/', 'log-analysis/', 'diagnosis/'] }],
-      '/ai-deep-seek/server-platform/': [{ text: '', collapsable: false, children: ['', 'programming/', 'cloud-infra/', 'data/'] }],
-      '/ai-deep-seek/architecture/': [{ text: '', collapsable: false, children: ['', 'distributed/', 'platform-evolution/', 'metrics/', 'quality-platform/', 'cicd-integration/'] }],
-      '/others/frontier/': [{ text: '', collapsable: false, children: ['', 'web3/', 'embodied-ai/', 'compliance/','aitest/'] }],
-      '/others/soft-skills/': [{ text: '', collapsable: false, children: ['', 'leadership/', 'problem-solving/', 'communication/'] }],
+      '/ai-testing-theory/': [{ text: 'AI测试理论', collapsable: true, children: ['', 'methodology/', 'evaluation-system/', 'comparison/', 'best-practices/'] }],
+      '/ai-testing-tech/': [{ text: 'AI测试技术', collapsable: true, children: ['', 'llm-tech/', 'vlm-tech/', 'agent-tech/', 'rag-tech/', 'model-evaluation/', 'self-healing'] }],
+      '/ai-testing-scenarios/': [{ text: 'AI测试场景', collapsable: true, children: ['', 'ui-testing/', 'api-testing/', 'performance-testing/', 'security-testing/', 'mobile-testing/'] }],
+      '/ai-testing-engineering/': [{ text: 'AI测试工程', collapsable: true, children: ['', 'data-engineering/', 'mlops/', 'platform/', 'devops/'] }],
+      '/ai-testing-quality/': [{ text: 'AI测试质量', collapsable: true, children: ['', 'quality-evaluation/', 'effectiveness-metrics/', 'risk-control/', 'compliance/'] }],
+      '/ai-deep-seek/': [{ text: 'AI深度探索', collapsable: true, children: ['', 'CHEATSHEET', '01-agent-arch/', '02-ai-security/', '03-architecture/', '04-model-training/', '05-server-platform/', '06-stability/', '07-vision-physical/'] }],
+      '/ai-deep-seek/07-vision-physical/': [{ text: '视觉融合', collapsable: true, children: ['', 'computer-vision/', 'detection/', 'robotic/'] }],
+      '/ai-deep-seek/06-stability/': [{ text: '稳定性测试', collapsable: true, children: ['', 'performance/', 'log-analysis/', 'diagnosis/'] }],
+      '/ai-deep-seek/05-server-platform/': [{ text: '服务端技术', collapsable: true, children: ['', 'programming/', 'cloud-infra/', 'data/'] }],
+      '/ai-deep-seek/03-architecture/': [{ text: '系统架构', collapsable: true, children: ['', 'distributed/', 'platform-evolution/', 'metrics/', 'quality-platform/', 'cicd-integration/'] }],
+      '/ai-deep-seek/01-agent-arch/': [{ text: '智能体架构', collapsable: true, children: ['', 'memory/', 'cognitive/', 'multi-agent/', 'tool-use/'] }],
+      '/ai-deep-seek/02-ai-security/': [{ text: 'AI安全', collapsable: true, children: ['', 'alignment-eval/', 'content-safety/', 'privacy/', 'red-team/'] }],
+      '/ai-deep-seek/04-model-training/': [{ text: '模型训练', collapsable: true, children: ['', 'pretraining/', 'finetuning/', 'compression/', 'alignment/'] }],
+      '/others/frontier/': [{ text: '前沿探索', collapsable: true, children: ['', 'web3/', 'embodied-ai/', 'compliance/', 'aitest/'] }],
+      '/others/soft-skills/': [{ text: '软技能', collapsable: true, children: ['', 'leadership/', 'problem-solving/', 'communication/'] }],
     }
   }),
   lang: 'zh-CN',

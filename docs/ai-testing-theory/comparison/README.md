@@ -528,4 +528,4 @@ AI测试工程师
 - [方法论](/ai-testing-theory/methodology/) - AI测试方法论
 - [评估体系](/ai-testing-theory/evaluation-system/) - AI测试评估体系
 - [最佳实践](/ai-testing-theory/best-practices/) - AI测试最佳实践
-- [前沿探索](/ai-testing-theory/comparison/evolution.md) - AI测试未来演进
+- [前沿探索](/others/frontier/) - 前沿技术探索
