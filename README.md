@@ -4,7 +4,7 @@
 
 这是一个专注于 AI 测试架构的知识库，旨在帮助测试工程师和技术团队构建 AI 原生测试平台，实现智能化测试全流程。内容涵盖 AI 驱动测试、LLM/VLM 工程化、测试框架、系统架构等多个技术领域。
 
-**在线访问地址**：<https://devdiv.github.io/school>
+**在线访问地址**：<https://devdiv.github.io/ai-test-school>
 
 ## ✨ 核心特色
 
@@ -131,8 +131,8 @@ school/
 
 ## 🔗 相关链接
 
-- **在线文档**: <https://devdiv.github.io/school>
-- **GitHub 仓库**: <https://github.com/devdiv/school>
+- **在线文档**: <https://devdiv.github.io/ai-test-school>
+- **GitHub 仓库**: <https://github.com/devdiv/ai-test-school>
 - **问题反馈**: <https://github.com/devdiv/school/issues>
 
 ***
