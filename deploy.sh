@@ -12,6 +12,6 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f "https://${access_token}@github.com/devdiv/school.git" main:gh-pages
+git push -f "https://${access_token}@github.com/devdiv/ai-test-school.git" main:gh-pages
 
 cd -
