@@ -1,5 +1,5 @@
 {
-  "name": "school",
+  "name": "ai-test-school",
   "version": "0.1.1",
   "description": "AI测试架构知识库",
   "private": true,
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/devdiv/school.git"
+    "url": "git+https://github.com/devdiv/ai-test-school.git"
   },
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.28",
