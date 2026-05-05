@@ -95,7 +95,7 @@ export default {
   lang: 'zh-CN',
   title: 'AI测试架构知识库',
   description: '构建AI原生测试平台，实现智能化测试全流程',
-  base: '/school/',
+  base: '/ai-test-school/',
   head: [
     ['link', { rel: 'apple-touch-icon', href: '/icons/apple-touch-icon.png' }],
     ['link', { rel: 'icon', href: 'images/favicon.ico' }],
